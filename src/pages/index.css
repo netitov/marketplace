@@ -1,3 +1,9 @@
-.page {
-  font-family: SegoeUI, Tahoma, Geneva, Verdana, sans-serif;
-}
+@import url(../vendor/normalize.css);
+@import url(../vendor/SegoeUI.css);
+@import url(../styles/page.css);
+@import url(../styles/header.css);
+@import url(../styles/searcher.css);
+@import url(../styles/navbar.css);
+
+
+
