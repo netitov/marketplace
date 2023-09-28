@@ -1,0 +1,64 @@
+.checkbox {
+  display: block;
+  position: relative;
+  padding: 0 0 0 33px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox__input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkbox__checkmark {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #eee;
+  border-radius: 6px;
+  width: 22px;
+  height: 22px;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox:hover .checkbox__input ~ .checkbox__checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox .checkbox__input:checked ~ .checkbox__checkmark {
+  background-color: var(--pink);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkbox__checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox .checkbox__input:checked ~ .checkbox__checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox .checkbox__checkmark:after {
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  height: 10px;
+  left: 8px;
+  top: 3px;
+  transform: rotate(45deg);
+  width: 5px;
+}

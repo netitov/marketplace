@@ -1,0 +1,145 @@
+.product-card {
+  position: relative;
+  display: flex;
+}
+
+.product-card__checkbox {
+  padding: 0;
+}
+
+.product-card__good {
+  margin-left: 34px;
+  display: flex;
+}
+
+.product-card__img {
+  margin-right: 16px;
+  width: 72px;
+  height: 96px;
+}
+
+.product-card__info {
+
+}
+
+.product-card__title {
+  font-size: 16px;
+  line-height: 24px;
+  overflow-wrap: break-word;
+}
+
+.product-card__name {
+
+}
+
+.product-card__brand {
+
+}
+
+.product-card__properties {
+  font-size: 13px;
+  line-height: 16px;
+  word-wrap: break-word;
+  margin: 8px 0;
+}
+
+.product-card__prop-value {
+  margin-right: 16px;
+}
+
+.product-card__prop-value:last-of-type {
+  margin-right: 0;
+}
+
+.product-card__store {
+  color: var(--grey);
+  font-size: 13px;
+  line-height: 16px;
+  word-wrap: break-word;
+}
+
+.product-card__store-value {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.product-card__company {
+  position: relative;
+  margin-top: 4px;
+}
+
+.product-card__company-tooltip {
+  right: -26px;
+  background-image: url('../images/tooltip.svg');
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.product-card__counter-wrapper {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 3px;
+}
+
+.product-card__remainder {
+  color: #FF3B30;
+  font-size: 13px;
+  line-height: 16px;
+  overflow-wrap: break-word;
+}
+
+.product-card__btn-box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.product-card__actn-btn {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-color: transparent;
+  background-position: center;
+}
+
+.product-card__actn-btn_like {
+  background-image: url('../images/like.svg');
+  margin-right: 16px;
+}
+
+.product-card__actn-btn_delete {
+  background-image: url('../images/delete.svg');
+}
+
+.product-card__sum-container {
+  width: 110px;
+  margin-left: 16px;
+  text-align: end;
+}
+
+.product-card__sum {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+.product-card__sum-tooltip {
+  color: var(--grey);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  border-bottom: 1px rgba(0, 0, 0, 0.20) dashed;
+  position: relative;
+  margin-top: 5px;
+}
+
+.product-card__curr {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}

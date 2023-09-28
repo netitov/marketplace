@@ -1,0 +1,22 @@
+.cart-form {
+  padding: var(--page-padding);
+  max-width: var(--max-width);
+  margin: auto;
+  padding-bottom: 40px;
+}
+
+.cart-form__content {
+  padding-top: 10px;
+}
+
+.cart-form__container {
+
+}
+
+.cart-form__heading {
+  color: black;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 36px;
+  margin: 0 0 25px;
+}

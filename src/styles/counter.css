@@ -1,0 +1,76 @@
+.counter {
+  height: 44px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.counter__btn {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  background-color: transparent;
+}
+
+/* .counter__btn::after {
+  content: '';
+  width: 9px;
+  height: 2px;
+  background-color: #000;
+  display: block;
+  left: calc(50% - 6px);
+  position: absolute;
+  top: 50%;
+}
+
+.counter__btn_plus::before {
+  content: '';
+  width: 9px;
+  height: 2px;
+  background-color: #000;
+  display: block;
+  left: calc(50% - 6px);
+  position: absolute;
+  top: 50%;
+  transform: rotate(90deg);
+}
+ */
+
+
+.counter__btn_minus {
+  background-image: url('../images/minus.svg');
+}
+
+.counter__btn_plus {
+  background-image: url('../images/plus.svg');
+}
+
+.counter__input {
+  font-size: 16px;
+  line-height: 24px;
+  overflow-wrap: break-word;
+  width: 44px;
+  height: 23px;
+  border: none;
+  outline: none;
+  text-align: center;
+  padding: 0;
+  background: transparent;
+  margin-bottom: 5px;
+}
+
+.counter__input::-webkit-outer-spin-button,
+.counter__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.counter__input[type=number] {
+  -moz-appearance: textfield;
+}
