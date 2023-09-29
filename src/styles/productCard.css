@@ -12,6 +12,10 @@
   display: flex;
 }
 
+.product-card__good_left {
+  margin-left: 0;
+}
+
 .product-card__img {
   width: 72px;
   height: 96px;

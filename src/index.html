@@ -193,7 +193,7 @@
                   <div class="products__card product-card">
 
                     <!-- image and description -->
-                    <div class="product-card__good">
+                    <div class="product-card__good product-card__good_left">
 
                       <!-- product img -->
                       <img
@@ -231,6 +231,104 @@
 
             </div>
 
+            <!-- delivery data -->
+            <div class="cart-form__card-wrapper cart-delivery">
+
+              <div class="cart-form__card-header-box">
+                <h3 class="cart-form__card-header">Способ доставки</h3>
+                <button class="cart-form__card-btn">Изменить</button>
+              </div>
+
+              <div class="cart-delivery__data">
+
+                <!-- adress row -->
+                <div class="cart-delivery__row">
+                  <span class="cart-delivery__title">Пункт выдачи</span>
+                  <div class="cart-delivery__value">
+                    <span>Бишкек, улица Ахматбека Суюмбаева, 12/1</span>
+                    <p class="cart-delivery__adress-data">
+                      <span class="cart-delivery__rating-icon"></span>
+                      <span class="cart-delivery__rating-value">4,99</span>
+                      Ежедневно с 10 до 21
+                    </p>
+                  </div>
+                </div>
+
+                <!-- delivery price row -->
+                <div class="cart-delivery__row">
+                  <span class="cart-delivery__title">Стоимость доставки</span>
+                  <span class="cart-delivery__value">Бесплатно</span>
+                </div>
+
+                <!-- delivery date row -->
+                <div class="cart-delivery__row">
+                  <span class="cart-delivery__title">5—6 февраля</span>
+                  <div class="cart-delivery__value">
+                    <ul class="cart-delivery__images">
+                      <li class="cart-delivery__image">
+                        <img
+                          src="<%=require('./images/photo1-small.png')%>"
+                          alt="Футболка UZcotton мужская"
+                        >
+                        <div class="cart-delivery__amount-box">
+                          <span class="cart-delivery__product-amount">1</span>
+                        </div>
+                      </li>
+                      <li class="cart-delivery__image">
+                        <img
+                          src="<%=require('./images/photo2-small.png')%>"
+                          alt="Футболка UZcotton мужская"
+                        >
+                        <div class="cart-delivery__amount-box">
+                          <span class="cart-delivery__product-amount">184</span>
+                        </div>
+                      </li>
+                      <li class="cart-delivery__image">
+                        <img
+                          src="<%=require('./images/photo3-small.png')%>"
+                          alt="Футболка UZcotton мужская"
+                        >
+                        <div class="cart-delivery__amount-box">
+                          <span class="cart-delivery__product-amount">2</span>
+                        </div>
+                      </li>
+                    </ul>
+
+                  </div>
+                </div>
+
+                <!-- delivery second date row -->
+                <div class="cart-delivery__row">
+                  <span class="cart-delivery__title">7—8 февраля</span>
+                  <div class="cart-delivery__value">
+                    <ul class="cart-delivery__images">
+                      <li class="cart-delivery__image">
+                        <img
+                          src="<%=require('./images/photo2-small.png')%>"
+                          alt="Футболка UZcotton мужская"
+                        >
+                        <div class="cart-delivery__amount-box">
+                          <span class="cart-delivery__product-amount">16</span>
+                        </div>
+                      </li>
+                    </ul>
+
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="cart-delivery__return">
+                <span class="cart-delivery__check-icon"></span>
+                <div class="cart-delivery__paragr">
+                  <span>Обратная доставка товаров на склад при отказе &mdash;</span>
+                  <div class="cart-delivery__tooltip tooltip">бесплатно
+                    <span class="tooltip__text">Tooltip text</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
 
           <!-- cart order -->

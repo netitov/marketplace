@@ -1,0 +1,123 @@
+
+
+
+.cart-delivery__data {
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+.cart-delivery__row {
+  margin-bottom: 16px;
+  display: flex;
+}
+
+.cart-delivery__row:last-of-type {
+  margin-bottom: 0;
+}
+
+.cart-delivery__title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  display: inline-block;
+  width: 153px;
+}
+
+.cart-delivery__value {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  margin-left: 32px;
+}
+
+.cart-delivery__rating-icon {
+  display: block;
+  width: 12px;
+  height: 12px;
+  background-image: url('../images/star.svg');
+}
+
+.cart-delivery__adress-data {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  line-height: 16px;
+  margin: 4px 0 0 0;
+}
+
+.cart-delivery__rating-value {
+  margin: 0 8px 0 2px;
+}
+
+.cart-delivery__images {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+}
+
+.cart-delivery__image {
+  position: relative;
+  margin-right: 8px;
+}
+
+.cart-delivery__image:last-of-type {
+  margin-right: 0;
+}
+
+.cart-delivery__image > img {
+  display: block;
+}
+
+.cart-delivery__amount-box {
+  background-color: var(--orange);
+  padding: 0 2px;
+  border-radius: 18px;
+  min-width: 12px;
+  position: absolute;
+  right: -4px;
+  top: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-delivery__product-amount {
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+.cart-delivery__return {
+  display: flex;
+  align-items: center;
+}
+
+.cart-delivery__check-icon {
+  width: 22px;
+  height: 22px;
+  background-image: url('../images/check.svg');
+  display: block;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.cart-delivery__paragr {
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.cart-delivery__tooltip {
+  color: #0CB477;
+  transition: opacity 0.3s;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 16px;
+  border-bottom: 1px dashed rgba(12, 180, 119, 0.20);
+  position: relative;
+}
+
+.cart-delivery__tooltip:hover {
+  opacity: 0.6;
+}
