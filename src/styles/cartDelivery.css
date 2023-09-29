@@ -110,7 +110,6 @@
 
 .cart-delivery__tooltip {
   color: #0CB477;
-  transition: opacity 0.3s;
   cursor: pointer;
   font-size: 13px;
   line-height: 16px;
@@ -118,6 +117,3 @@
   position: relative;
 }
 
-.cart-delivery__tooltip:hover {
-  opacity: 0.6;
-}

@@ -37,12 +37,14 @@
   border-radius: 16px;
   z-index: 3;
   position: relative;
+  margin-bottom: 16px;
 }
 
 .cart-form__card-wrapper_main {
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.30);
   position: sticky;
   top: 10px;
+  margin: 0;
 }
 
 .cart-form__card-header-box {

@@ -1,0 +1,37 @@
+.cart-payment {
+
+}
+
+.cart-payment__card {
+  display: flex;
+  align-items: center;
+  margin: 16px 0 8px 0;
+}
+
+.cart-payment__card-icon {
+  background-color: var(--smoky);
+  background-image: url('../images/mir.svg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  display: block;
+  height: 9.33px;
+  margin-right: 8px;
+  padding: 7.34px 1px;
+  width: 30px;
+}
+
+.cart-payment__card-details {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.cart-payment__card-date {
+  margin-left: 12px;
+}
+
+.cart-payment__add-info {
+  color: var(--grey);
+  font-size: 13px;
+  line-height: 16px;
+}
