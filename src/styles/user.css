@@ -1,0 +1,95 @@
+.user__data {
+  grid-gap: 35px 24px;
+  display: grid;
+  grid-template-areas:
+    "username username username userlastname userlastname userlastname"
+    "email email phone phone inn inn";
+  margin-top: 34px;
+  max-width: 700px;
+  width: 100%;
+}
+
+.user__input-container {
+  position: relative;
+}
+
+.user__input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  width: 100%;
+  font-size: 16px;
+  line-height: 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.20);
+  transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+}
+
+.user__input-container {
+
+}
+
+.user__input:hover {
+  border-color: var(--grey);
+}
+
+.user__input:focus {
+  border-color: var(--pink);
+}
+
+.user__label {
+  color: var(--grey);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 16px;
+  line-height: 24px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.user__input:focus ~ .user__label, .user__input:valid ~ .user__label {
+  transform: translateY(-18px);
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.user__input-container_username {
+  grid-area: username;
+}
+
+.user__input-container_userlastname {
+  grid-area: userlastname;
+}
+
+.user__input-container_email {
+  grid-area: email;
+}
+
+.user__input-container_phone {
+  grid-area: phone;
+}
+
+.user__input-container_inn {
+  grid-area: inn;
+}
+
+.user__input-error {
+  color: var(--orange);
+  font-size: 12px;
+  line-height: 14px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.user__input:focus ~ .user__label, .user__input:invalid ~ .user__input-error {
+  /* visibility: visible;
+  opacity: 1; */
+}
+
+.user__input-info {
+  font-size: 12px;
+  line-height: 14px;
+}
