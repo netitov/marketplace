@@ -2,7 +2,7 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8">
-    <title>Товары и точка</title>
+    <title>Товары и точка | Корзина</title>
   </head>
   <body>
     <div class="page">
@@ -50,7 +50,6 @@
 
       </header>
 
-
       <!-- cart -->
       <main class="main">
         <form class="main__cart cart-form">
@@ -89,7 +88,6 @@
                     </g>
                   </svg>
                 </div>
-
                 <div class="products__list">
 
                   <!-- product card -->
@@ -154,7 +152,6 @@
 
                     <div class="product-card__sum-container">
                       <span class="product-card__sum">522&nbsp;<span class="product-card__curr">сом</span></span>
-                      <!-- <span class="product-card__prev-sum">1051&nbsp;сом</span> -->
                       <!-- tooltip -->
                       <div class="product-card__sum-tooltip tooltip">1051&nbsp;сом
                         <span class="tooltip__text">Tooltip text</span>
@@ -175,8 +172,98 @@
 
           </div>
 
-          <!-- cart-sum -->
-          <div>
+          <!-- cart order -->
+          <div class="cart-form__sidebar">
+            <div class="cart-form__card-wrapper cart-form__card-wrapper_main">
+
+              <!-- order data -->
+              <div class="cart-form__order order">
+
+                <!-- order sum -->
+                <div class="order__element order__sum-wrapper">
+
+                  <!-- final summ -->
+                  <div class="order__sum-container">
+                    <span class="order__sum order__sum_main">Итого</span>
+                    <span class="order__sum order__sum_main">2 101 063&nbsp;<span class="order__curr">сом</span></span>
+                  </div>
+
+                  <!-- full sum -->
+                  <div class="order__sum-container">
+                    <span class="order__sum">203 товара</span>
+                    <span class="order__sum">2 302 048&nbsp;сом</span>
+                  </div>
+
+                  <!-- discount -->
+                  <div class="order__sum-container">
+                    <span class="order__sum">Скидка</span>
+                    <span class="order__sum">-200 985&nbsp;сом</span>
+                  </div>
+
+                  <!-- delivery -->
+                  <div class="order__sum-container">
+                    <span class="order__sum">Доставка</span>
+                    <span class="order__sum">Бесплатно</span>
+                  </div>
+
+                </div>
+
+                <!-- delivery data -->
+                <div class="order__element order__delivery">
+                  <div class="order__element-heading">
+                    <span class="order__heading">Доставка в пункт выдачи</span>
+                    <span class="order__edit"></span>
+                  </div>
+                  <p class="order__paragr">Бишкек, улица Ахматбека Суюмбаева, 12/1</p>
+                  <button type="button" class="order__delivery-date">5-8 фев</button>
+                  <div class="order__add-info">
+                    <span class="order__delivery-check"></span>
+                    <div class="order__paragr">
+                      <span>Обратная доставка товаров на склад при отказе &mdash;</span>
+                      <div class="order__delivery-tooltip tooltip">бесплатно
+                        <span class="tooltip__text">Tooltip text</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- payment data -->
+                <div class="order__element order__payment">
+
+                  <!-- heading -->
+                  <div class="order__element-heading">
+                    <span class="order__heading">Оплата картой</span>
+                    <span class="order__edit"></span>
+                  </div>
+
+                  <!-- card data -->
+                  <div class="order__payment-card">
+                    <span class="order__card-icon"></span>
+                    <span class="order__card-number">1234 12•• •••• 1234</span>
+                  </div>
+
+                  <!-- payment type -->
+                  <div class="order__add-info order__add-info_column">
+                    <label class="order__checkbox checkbox">Списать оплату сразу
+                      <input type="checkbox" class="checkbox__input">
+                      <span class="checkbox__checkmark order__checkmark"></span>
+                    </label>
+                    <p class="order__paragr">Спишем оплату с карты при получении</p>
+                  </div>
+                </div>
+
+                <button type="button" class="order__sbt-btn">Заказать</button>
+                <div class="order__oferta-box">
+                  <span class="order__oferta-icon"></span>
+                  <p class="order__paragr order__oferta">Соглашаюсь
+                    <a class="order__oferta-link" href="#">с правилами пользования торговой площадкой</a> и
+                    <a class="order__oferta-link" href="#">возврата</a>
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
           </div>
 
         </form>
