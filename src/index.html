@@ -165,7 +165,68 @@
 
               <!-- missing products -->
               <div class="cart-form__products products">
+                <div class="products__heading">
+                  <h3 class="products__title">Отсутствуют · 3 товара</h3>
+                  <svg
+                    class="products__accordion-icon"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="icon-20">
+                    <path
+                      id="Vector"
+                      d="M17.3417 14.9121C16.966 15.2982 16.3477 15.3044 15.9644 14.9258L10.1418
+                      9.17475C10.0634 9.0973 9.93715 9.09788 9.85945 9.17603L4.15281 14.9159C3.76725
+                      15.3037 3.14293 15.3137 2.74516 14.9384C2.33549 14.552 2.32163 13.9049 2.71437
+                      13.5012L9.28326 6.74949C9.67588 6.34593 10.3241 6.34593 10.7167 6.74949L17.3417
+                      13.5588C17.7082 13.9355 17.7082 14.5354 17.3417 14.9121Z"
+                      fill="#9797AF"/>
+                    </g>
+                  </svg>
+                </div>
+                <div class="products__list">
 
+                  <!-- product card -->
+                  <div class="products__card product-card">
+
+                    <!-- image and description -->
+                    <div class="product-card__good">
+
+                      <!-- product img -->
+                      <img
+                        src="<%=require('./images/photo1.png')%>"
+                        alt="Футболка UZcotton мужская"
+                        class="product-card__img product-card__img_grey"
+                        >
+
+                      <!-- product description -->
+                      <div class="product-card__info product-card__info_grey">
+                        <a class="product-card__title">
+                          <span class="product-card__name">Some T Shirt</span><span class="product-card__brand">, Nike</span>
+                        </a>
+                        <div class="product-card__properties">
+                          <span class="product-card__prop-value">Color: red</span>
+                          <span class="product-card__prop-value">Size: small</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- action btns -->
+                    <div class="product-card__counter-wrapper">
+                      <div class="product-card__btn-box">
+                        <button type="button" class="product-card__actn-btn product-card__actn-btn_like"></button>
+                        <button type="button" class="product-card__actn-btn product-card__actn-btn_delete"></button>
+                      </div>
+                    </div>
+
+                    <div class="product-card__sum-container">
+                    </div>
+
+                  </div>
+                </div>
               </div>
 
             </div>

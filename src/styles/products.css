@@ -1,5 +1,5 @@
 .products {
-
+  margin-bottom: 40px;
 }
 
 .products__heading {
@@ -16,6 +16,13 @@
   content: " ";
   position: absolute;
   bottom: -17px;
+}
+
+.products__title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  margin: 0;
 }
 
 .products__accordion-icon {

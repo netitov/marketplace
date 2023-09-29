@@ -13,13 +13,21 @@
 }
 
 .product-card__img {
-  margin-right: 16px;
   width: 72px;
   height: 96px;
+  margin-right: 16px;
+}
+
+.product-card__img_grey {
+  filter: grayscale(0.95);
 }
 
 .product-card__info {
 
+}
+
+.product-card__info_grey {
+  color: var(--grey);
 }
 
 .product-card__title {
@@ -143,3 +151,5 @@
   font-weight: 700;
   line-height: 24px;
 }
+
+
