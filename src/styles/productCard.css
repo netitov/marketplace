@@ -45,8 +45,10 @@
   width: 275px;
 }
 
-.product-card__info_grey {
+.product-card__info_missing {
   color: var(--grey);
+  width: 309px;
+
 }
 
 .product-card__title {
@@ -60,7 +62,7 @@
 }
 
 .product-card__brand {
-
+  white-space: nowrap;
 }
 
 .product-card__properties {

@@ -115,12 +115,9 @@
                           <!-- product description -->
                           <div class="product-card__info">
                             <a class="product-card__title">
-                              <span class="product-card__name"></span><br>
-                              <span class="product-card__brand"></span>
+                              <span class="product-card__name"></span><span class="product-card__brand"></span>
                             </a>
-                            <div class="product-card__properties">
-                              <!-- <span class="product-card__prop-value"></span> -->
-                            </div>
+                            <div class="product-card__properties"></div>
                             <div class="product-card__store">
                               <span class="product-card__store-value"></span>
                               <div class="product-card__company">
@@ -179,8 +176,6 @@
                       </li>
                     </template>
                   </ul>
-
-
               </div>
 
               <!-- missing products -->
@@ -207,46 +202,45 @@
                     </g>
                   </svg>
                 </div>
-                <div class="products__list">
 
-                  <!-- product card -->
-                  <div class="products__card product-card">
+                <ul class="products__list products__list_missing">
+                  <template id="missingProductTemplate">
+                    <!-- product card -->
+                    <li class="products__card product-card">
 
-                    <!-- image and description -->
-                    <div class="product-card__good product-card__good_left">
+                      <!-- image and description -->
+                      <div class="product-card__good product-card__good_left">
 
-                      <!-- product img -->
-                      <img
-                        src="<%=require('./images/photo1.png')%>"
-                        alt="Футболка UZcotton мужская"
-                        class="product-card__img product-card__img_grey"
-                        >
+                        <!-- product img -->
+                        <img
+                          src="<%=require('./images/photo1.png')%>"
+                          alt="Футболка UZcotton мужская"
+                          class="product-card__img product-card__img_grey"
+                          >
 
-                      <!-- product description -->
-                      <div class="product-card__info product-card__info_grey">
-                        <a class="product-card__title">
-                          <span class="product-card__name">Some T Shirt</span><span class="product-card__brand">, Nike</span>
-                        </a>
-                        <div class="product-card__properties">
-                          <span class="product-card__prop-value">Color: red</span>
-                          <span class="product-card__prop-value">Size: small</span>
+                        <!-- product description -->
+                        <div class="product-card__info product-card__info_missing">
+                          <a class="product-card__title">
+                            <span class="product-card__name"></span><span class="product-card__brand"></span>
+                          </a>
+                          <div class="product-card__properties"></div>
                         </div>
                       </div>
-                    </div>
 
-                    <!-- action btns -->
-                    <div class="product-card__counter-wrapper">
-                      <div class="product-card__btn-box">
-                        <button type="button" class="product-card__actn-btn product-card__actn-btn_like"></button>
-                        <button type="button" class="product-card__actn-btn product-card__actn-btn_delete"></button>
+                      <!-- action btns -->
+                      <div class="product-card__counter-wrapper">
+                        <div class="product-card__btn-box">
+                          <button type="button" class="product-card__actn-btn product-card__actn-btn_like"></button>
+                          <button type="button" class="product-card__actn-btn product-card__actn-btn_delete"></button>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="product-card__sum-container">
-                    </div>
+                      <div class="product-card__sum-container">
+                      </div>
 
-                  </div>
-                </div>
+                    </li>
+                  </template>
+                </ul>
               </div>
 
             </div>
