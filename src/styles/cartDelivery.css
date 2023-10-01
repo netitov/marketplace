@@ -1,4 +1,6 @@
-
+.cart-delivery {
+  z-index: 1;
+}
 
 
 .cart-delivery__data {
@@ -115,5 +117,15 @@
   line-height: 16px;
   border-bottom: 1px dashed rgba(12, 180, 119, 0.20);
   position: relative;
+}
+
+.cart-delivery__tooltip-text {
+  width: 288px;
+  box-sizing: border-box;
+  display: block;
+  padding: 10px 16px 14px;
+  color: #000;
+  font-size: 13px;
+  line-height: 16px;
 }
 

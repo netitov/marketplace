@@ -1,19 +1,34 @@
 .product-card {
   position: relative;
   display: flex;
+  margin-bottom: 20px;
 }
 
 .product-card__checkbox {
   padding: 0;
+  position: absolute;
+  top: 50%;
+}
+
+.product-card__checkbox > .checkbox__checkmark {
+  left: -34px;
 }
 
 .product-card__good {
   margin-left: 34px;
   display: flex;
+  padding-top: 12px;
+  grid-area: good;
 }
 
 .product-card__good_left {
   margin-left: 0;
+}
+
+.product-card__img-box {
+  display: flex;
+  align-self: flex-start;
+  position: relative;
 }
 
 .product-card__img {
@@ -27,7 +42,7 @@
 }
 
 .product-card__info {
-
+  width: 275px;
 }
 
 .product-card__info_grey {
@@ -78,24 +93,46 @@
 .product-card__company {
   position: relative;
   margin-top: 4px;
+  display: flex;
+  align-items: center;
 }
 
 .product-card__company-tooltip {
-  right: -26px;
+  margin-left: 6px;
+  position: relative;
+}
+
+.product-card__company-tooltip > .tooltip__text-box {
+  right: -113px;
+}
+
+.product-card__company-tooltip-value {
   background-image: url('../images/tooltip.svg');
-  width: 20px;
+  display: block;
   height: 20px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  width: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.product-card__company-tooltip-text {
+  width: 280px;
+  display: block;
+  box-sizing: border-box;
+  padding: 11px 16px 13px;
+}
+
+.product-card__wrapper {
+  padding-top: 9px;
 }
 
 .product-card__counter-wrapper {
+  display: grid;
+  grid-area: counter;
   margin-left: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-top: 3px;
+  padding-top: 12px;
+  grid-gap: 8px;
+  align-self: flex-start;
 }
 
 .product-card__remainder {
@@ -132,12 +169,18 @@
   width: 110px;
   margin-left: 16px;
   text-align: end;
+  grid-area: sum;
+  padding-top: 9px;
 }
 
 .product-card__sum {
   font-size: 20px;
   font-weight: 700;
   line-height: 28px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
 }
 
 .product-card__sum-tooltip {
@@ -148,6 +191,42 @@
   border-bottom: 1px rgba(0, 0, 0, 0.20) dashed;
   position: relative;
   margin-top: 5px;
+  text-decoration: line-through;
+}
+
+.product-card__sum-tooltip > .tooltip__text-box {
+
+}
+
+.product-card__sum-tooltip-text {
+  display: block;
+  width: 239px;
+  padding: 11px 16px 13px;
+  box-sizing: border-box;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.product-card__tooltip-row {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  color: var(--grey);
+}
+
+.product-card__tooltip-row:first-of-type {
+  margin-bottom: 8px;
+  color: #A0A0A4;
+}
+
+.product-card__tooltip-row > span {
+  margin-right: 8px;
+  text-align: start;
+}
+
+.product-card__disc-value, .product-card__cost-disc-value {
+  color: #000;
+  white-space: nowrap;
 }
 
 .product-card__curr {

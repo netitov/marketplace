@@ -88,78 +88,98 @@
                     </g>
                   </svg>
                 </div>
-                <div class="products__list">
 
-                  <!-- product card -->
-                  <div class="products__card product-card">
+                  <ul class="products__list">
 
-                    <!-- checkbox -->
-                    <label class="product-card__checkbox checkbox">
-                      <input type="checkbox" class="checkbox__input" checked>
-                      <span class="checkbox__checkmark"></span>
-                    </label>
+                    <!-- product card -->
+                    <template id="productTemplate">
+                      <li class="products__card product-card">
 
-                    <!-- image and description -->
-                    <div class="product-card__good">
-                      <!-- product img -->
-                      <img
-                        src="<%=require('./images/photo1.png')%>"
-                        alt="Футболка UZcotton мужская"
-                        class="product-card__img"
-                      >
+                        <!-- image and description -->
+                        <div class="product-card__good">
 
-                      <!-- product description -->
-                      <div class="product-card__info">
-                        <a class="product-card__title">
-                          <span class="product-card__name">Some T Shirt</span><span class="product-card__brand">, Nike</span>
-                        </a>
-                        <div class="product-card__properties">
-                          <span class="product-card__prop-value">Color: red</span>
-                          <span class="product-card__prop-value">Size: small</span>
-                        </div>
-                        <div class="product-card__store">
-                          <span class="product-card__store-value">Coledino WB</span>
-                          <span class="product-card__company">
-                            OOO WildBerries
+                          <!-- product img -->
+                          <div class="product-card__img-box">
+                            <!-- checkbox -->
+                            <label class="product-card__checkbox checkbox">
+                              <input type="checkbox" class="checkbox__input" checked>
+                              <span class="checkbox__checkmark"></span>
+                            </label>
+                            <img
+                              src=""
+                              alt=""
+                              class="product-card__img"
+                            >
+                          </div>
 
-                            <!-- tooltip -->
-                            <div class="product-card__company-tooltip tooltip">
-                              <span class="tooltip__text">Tooltip text</span>
+                          <!-- product description -->
+                          <div class="product-card__info">
+                            <a class="product-card__title">
+                              <span class="product-card__name"></span><br>
+                              <span class="product-card__brand"></span>
+                            </a>
+                            <div class="product-card__properties">
+                              <!-- <span class="product-card__prop-value"></span> -->
                             </div>
-
-                          </span>
+                            <div class="product-card__store">
+                              <span class="product-card__store-value"></span>
+                              <div class="product-card__company">
+                                <span class="product-card__company-name"></span>
+                                <!-- tooltip -->
+                                <div class="product-card__company-tooltip tooltip">
+                                  <span class="product-card__company-tooltip-value"></span>
+                                  <div class="tooltip__text-box">
+                                    <span class="tooltip__text product-card__company-tooltip-text"></span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
 
-                    <!-- counter and action btns -->
-                    <div class="product-card__counter-wrapper">
+                        <!-- counter and action btns -->
+                        <div class="product-card__counter-wrapper">
 
-                      <!-- counter -->
-                      <div class="product-card__counter counter">
-                        <button type="button" class="counter__btn counter__btn_minus"></button>
-                        <input type="number" min="1" value="1" class="counter__input" autocomplete="off">
-                        <button type="button" class="counter__btn counter__btn_plus"></button>
-                      </div>
+                          <!-- counter -->
+                          <div class="product-card__counter counter">
+                            <button type="button" class="counter__btn counter__btn_minus"></button>
+                            <input type="number" min="1" value="1" class="counter__input" autocomplete="off">
+                            <button type="button" class="counter__btn counter__btn_plus"></button>
+                          </div>
 
-                      <span class="product-card__remainder">Осталось 2 шт.</span>
-                      <div class="product-card__btn-box">
-                        <button type="button" class="product-card__actn-btn product-card__actn-btn_like"></button>
-                        <button type="button" class="product-card__actn-btn product-card__actn-btn_delete"></button>
-                      </div>
+                          <span class="product-card__remainder">Осталось 2 шт.</span>
+                          <div class="product-card__btn-box">
+                            <button type="button" class="product-card__actn-btn product-card__actn-btn_like"></button>
+                            <button type="button" class="product-card__actn-btn product-card__actn-btn_delete"></button>
+                          </div>
 
-                    </div>
+                        </div>
 
-                    <div class="product-card__sum-container">
-                      <span class="product-card__sum">522&nbsp;<span class="product-card__curr">сом</span></span>
-                      <!-- tooltip -->
-                      <div class="product-card__sum-tooltip tooltip">1051&nbsp;сом
-                        <span class="tooltip__text">Tooltip text</span>
-                      </div>
-                    </div>
+                        <!-- sum data -->
+                        <div class="product-card__sum-container">
+                          <span class="product-card__sum">522&nbsp;<span class="product-card__curr">сом</span></span>
+                          <!-- tooltip -->
+                          <div class="product-card__sum-tooltip tooltip">
+                            <span class="product-card__sum-value"></span>
+                            <div class="tooltip__text-box">
+                              <div class="tooltip__text product-card__sum-tooltip-text">
+                                <p class="product-card__tooltip-row">
+                                  <span>Скидка <span class="product-card__disc"></span></span>
+                                  <span class="product-card__disc-value"></span>
+                                </p>
+                                <p class="product-card__tooltip-row">
+                                  <span>Скидка покупателя <span class="product-card__cost-disc"></span></span>
+                                  <span class="product-card__cost-disc-value"></span>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
-                  </div>
-                </div>
+                      </li>
+                    </template>
+                  </ul>
+
 
               </div>
 
@@ -323,7 +343,11 @@
                 <div class="cart-delivery__paragr">
                   <span>Обратная доставка товаров на склад при отказе &mdash;</span>
                   <div class="cart-delivery__tooltip tooltip">бесплатно
-                    <span class="tooltip__text">Tooltip text</span>
+                    <div class="tooltip__text-box">
+                      <span class="tooltip__text cart-delivery__tooltip-text">
+                        Если товары вам не подойдут, мы вернем их обратно на склад — это бесплатно
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -436,7 +460,11 @@
                     <div class="order__paragr">
                       <span>Обратная доставка товаров на склад при отказе &mdash;</span>
                       <div class="order__delivery-tooltip tooltip">бесплатно
-                        <span class="tooltip__text">Tooltip text</span>
+                        <div class="tooltip__text-box">
+                          <span class="tooltip__text order__delivery-tooltip-text">
+                            Если товары вам не подойдут, мы вернем их обратно на склад — это бесплатно
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>

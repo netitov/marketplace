@@ -88,6 +88,7 @@
   display: flex;
   align-items: center;
   border-radius: 8px;
+  position: relative;
 }
 
 .order__add-info_column {
@@ -110,7 +111,23 @@
   font-size: 13px;
   line-height: 16px;
   border-bottom: 1px dashed rgba(12, 180, 119, 0.20);
-  position: relative;
+  position: static;
+}
+
+.order__delivery-tooltip > .tooltip__text-box {
+  right: -10px;
+  bottom: -48px;
+  top: auto;
+}
+
+.order__delivery-tooltip-text {
+  width: 288px;
+  padding: 10px 16px 14px;
+  display: block;
+  box-sizing: border-box;
+  color: #000;
+  font-size: 13px;
+  line-height: 16px;
 }
 
 .order__payment-card {
