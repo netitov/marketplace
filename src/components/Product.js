@@ -4,7 +4,6 @@ export default class Product {
   constructor(card, elementTemplate, {handlePopupDelete, setLike}, missingCard) {
     this._elementTemplate = elementTemplate;
     this._handlePopupDelete = handlePopupDelete;
-    //this._increaseCounter = increaseCounter;
     this._card = card;
     this._setLike = setLike;
     this._missingCard = missingCard;
@@ -41,7 +40,7 @@ export default class Product {
     this._likeIcon = this._cardElement.querySelector('.product-card__actn-btn-like');
     this._plusBtn = this._cardElement.querySelector('.counter__btn_plus');
     this._minusBtn = this._cardElement.querySelector('.counter__btn_minus');
-    this._counterInput = this._cardElement.querySelector('.counter__input');
+    //this._counterInput = this._cardElement.querySelector('.counter__input');
 
     const card = this._card;
 
@@ -57,20 +56,7 @@ export default class Product {
       this._cardCompanyData.textContent = card.companyData;
       this._cardAmount.value = card.amount;
 
-      const roundedPriceAmount = Math.round(card.price * card.amount);
-      const roundedDiscountedPriceAmount = Math.round(card.price * (1 - card.disc) * card.amount);
-      const roundedDiscountValue = Math.round(card.price * card.amount * card.disc);
-      const roundedCostDiscountValue = Math.round(card.price * card.amount * card.disc * card.costDisc);
-
-      this._cardFullSum.textContent = `${formatNumber(roundedPriceAmount)} сом`;
-      this._cardSum.textContent = `${formatNumber(roundedDiscountedPriceAmount)} сом`;
-      this._cardSumDisc.textContent = Math.round(card.disc * 100) + '%';
-      this._cardSumDiscValue.textContent = `−${formatNumber(roundedDiscountValue)} сом`;
-      this._cardSumConsDisc.textContent = Math.round(card.costDisc * 100) + '%';
-      this._cardSumCostDiscValue.textContent = `−${formatNumber(roundedCostDiscountValue)} сом`;
-      this._cardSum.title = this._cardSum.textContent;
-
-      this._counterValue = parseInt(this._counterInput.value);
+      this._updateSum();
       this._updateLeftovers();
       this._toggleCounterActivity();
     }
@@ -105,10 +91,9 @@ export default class Product {
   }
 
   _increaseCounter() {
-    const currentValue = parseInt(this._counterInput.value);
-
+    const currentValue = parseInt(this._cardAmount.value);
     if ((this._card.remainder - currentValue) > 0) {
-      this._counterInput.value = currentValue + 1;
+      this._cardAmount.value = currentValue + 1;
       this._updateSum();
       this._updateLeftovers();
       this._toggleCounterActivity();
@@ -116,27 +101,54 @@ export default class Product {
   }
 
   _decreaseCounter() {
-    const currentValue = parseInt(this._counterInput.value)
+    const currentValue = parseInt(this._cardAmount.value)
     if (currentValue > 1) {
-      this._counterInput.value = currentValue - 1;
+      this._cardAmount.value = currentValue - 1;
       this._updateSum();
       this._updateLeftovers();
       this._toggleCounterActivity();
     }
   }
 
-  _updateSum() {
-    const currentValue = parseInt(this._counterInput.value);
-    const roundedPriceAmount = Math.round(this._card.price * currentValue);
-    const roundedDiscountedPriceAmount = Math.round(this._card.price * (1 - this._card.disc) * currentValue);
+  //handle update product amount on input change
+  _changeInputCounter(data) {
+    const newValue = parseInt(data);
 
-    this._cardSum.textContent = formatNumber(roundedDiscountedPriceAmount) + ' сом';
-    this._cardFullSum.textContent = formatNumber(roundedPriceAmount) + ' сом';
+    if (newValue < 1) {
+      this._cardAmount.value = 1;
+    }
+
+    if ((this._card.remainder - newValue) < 0) {
+      this._cardAmount.value = this._card.remainder;
+    }
+
+    this._updateSum();
+    this._updateLeftovers();
+    this._toggleCounterActivity();
+
   }
 
-  //generate/ update number of remaining products
+  //update product sum when amount is changed
+  _updateSum() {
+    const currentValue = parseInt(this._cardAmount.value);
+    const roundedPriceAmount = Math.round(this._card.price * currentValue);
+    const roundedDiscountedPriceAmount = Math.round(this._card.price * (1 - this._card.disc) * currentValue);
+    const roundedDiscountValue = Math.round(this._card.price * currentValue * this._card.disc);
+    const roundedCostDiscountValue = Math.round(this._card.price * currentValue * this._card.disc * this._card.costDisc);
+
+    //product cost
+    this._cardSum.textContent = formatNumber(roundedDiscountedPriceAmount) + ' сом';
+    this._cardFullSum.textContent = formatNumber(roundedPriceAmount) + ' сом';
+    this._cardSum.title = this._cardSum.textContent;
+
+    //discount data
+    this._cardSumDiscValue.textContent = `−${formatNumber(roundedDiscountValue)} сом`;
+    this._cardSumCostDiscValue.textContent = `−${formatNumber(roundedCostDiscountValue)} сом`;
+  }
+
+  //update number of remaining products
   _updateLeftovers() {
-    const currentValue = parseInt(this._counterInput.value);
+    const currentValue = parseInt(this._cardAmount.value);
     if ((this._card.remainder - currentValue) < 3) {
       this._cardRemainder.textContent = `Осталось ${this._card.remainder - currentValue} шт.`;
       if (this._cardRemainder.style.display === 'none' ) {
@@ -149,7 +161,7 @@ export default class Product {
 
   //activate/deactivate counter btns
   _toggleCounterActivity() {
-    const currentValue = parseInt(this._counterInput.value);
+    const currentValue = parseInt(this._cardAmount.value);
 
     //toggle minus btn
     if (currentValue < 2) {
@@ -178,6 +190,9 @@ export default class Product {
     });
     if (this._minusBtn) this._minusBtn.addEventListener('click', () => {
       this._decreaseCounter();
+    });
+    if (this._cardAmount) this._cardAmount.addEventListener('change', (e) => {
+      this._changeInputCounter(e.target.value);
     });
   }
 
