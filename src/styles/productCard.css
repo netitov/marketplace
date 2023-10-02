@@ -55,6 +55,9 @@
   font-size: 16px;
   line-height: 24px;
   overflow-wrap: break-word;
+  cursor: pointer;
+  text-decoration: none;
+  color: currentColor;
 }
 
 .product-card__name {
@@ -142,12 +145,24 @@
   font-size: 13px;
   line-height: 16px;
   overflow-wrap: break-word;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card:hover .product-card__remainder {
+  opacity: 1;
 }
 
 .product-card__btn-box {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card:hover .product-card__btn-box {
+  opacity: 1;
 }
 
 .product-card__actn-btn {
@@ -156,15 +171,29 @@
   border: none;
   background-color: transparent;
   background-position: center;
+  cursor: pointer;
+  transition: background-image 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.product-card__actn-btn_like {
+.product-card__actn-btn:active {
+  transform: scale(1.2);
+}
+
+.product-card__actn-btn-like {
   background-image: url('../images/like.svg');
   margin-right: 16px;
 }
 
-.product-card__actn-btn_delete {
+.product-card__actn-btn-like:hover, .product-card__actn-btn-like_active {
+  background-image: url('../images/like-pink.svg');
+}
+
+.product-card__actn-btn-delete {
   background-image: url('../images/delete.svg');
+}
+
+.product-card__actn-btn-delete:hover {
+  background-image: url('../images/delete-orange.svg');
 }
 
 .product-card__sum-container {
@@ -236,5 +265,3 @@
   font-weight: 700;
   line-height: 24px;
 }
-
-

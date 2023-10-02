@@ -37,8 +37,8 @@ export default class Product {
     this._cardSumDiscValue = this._cardElement.querySelector('.product-card__disc-value');
     this._cardSumConsDisc = this._cardElement.querySelector('.product-card__cost-disc');
     this._cardSumCostDiscValue = this._cardElement.querySelector('.product-card__cost-disc-value');
-    this._deletetBtn = this._cardElement.querySelector('.product-card__actn-btn_delete');
-    this._likeIcon = this._cardElement.querySelector('.product-card__actn-btn_like');
+    this._deletetBtn = this._cardElement.querySelector('.product-card__actn-btn-delete');
+    this._likeIcon = this._cardElement.querySelector('.product-card__actn-btn-like');
 
     const card = this._card;
 
@@ -93,21 +93,24 @@ export default class Product {
     });
   }
 
+  //add or remove like
+  _toggleLike(e) {
+    e.target.classList.toggle('product-card__actn-btn-like_active')
+  }
+
+  //remove card from the list
+  _removeCard() {
+    const cardElement = this._deletetBtn.closest('.product-card');
+    cardElement.remove();
+  }
+
   _setEventListeners() {
     this._likeIcon.addEventListener('click', (e) => {
-      this._setLike(e, this._card)});
+      this._toggleLike(e)
+    });
     this._deletetBtn.addEventListener('click', () => {
-      this._handlePopupDelete(this._cardElement)
+      this._removeCard();
     });
   }
 
-  _handleLikeIcon(e) {
-    e.target.classList.toggle('elements__like_active')
-  }
-
-  /* _isLiked() {
-    this._card.likes.forEach(() => {
-      this._likeIcon.classList.add('elements__like_active');
-    })
-  } */
 }
