@@ -4,7 +4,7 @@ export default class Product {
   constructor(card, elementTemplate, {handlePopupDelete, setLike}, missingCard) {
     this._elementTemplate = elementTemplate;
     this._handlePopupDelete = handlePopupDelete;
-
+    //this._increaseCounter = increaseCounter;
     this._card = card;
     this._setLike = setLike;
     this._missingCard = missingCard;
@@ -39,6 +39,9 @@ export default class Product {
     this._cardSumCostDiscValue = this._cardElement.querySelector('.product-card__cost-disc-value');
     this._deletetBtn = this._cardElement.querySelector('.product-card__actn-btn-delete');
     this._likeIcon = this._cardElement.querySelector('.product-card__actn-btn-like');
+    this._plusBtn = this._cardElement.querySelector('.counter__btn_plus');
+    this._minusBtn = this._cardElement.querySelector('.counter__btn_minus');
+    this._counterInput = this._cardElement.querySelector('.counter__input');
 
     const card = this._card;
 
@@ -67,12 +70,9 @@ export default class Product {
       this._cardSumCostDiscValue.textContent = `−${formatNumber(roundedCostDiscountValue)} сом`;
       this._cardSum.title = this._cardSum.textContent;
 
-      //generate number of remaining products
-      if (this._card.remainder !== '') {
-        this._cardRemainder.textContent = `Осталось ${this._card.remainder} шт.`;
-      } else {
-        this._cardRemainder.style.display = 'none';
-      }
+      this._counterValue = parseInt(this._counterInput.value);
+      this._updateLeftovers();
+      this._toggleCounterActivity();
     }
 
     //generate props array
@@ -104,12 +104,80 @@ export default class Product {
     cardElement.remove();
   }
 
+  _increaseCounter() {
+    const currentValue = parseInt(this._counterInput.value);
+
+    if ((this._card.remainder - currentValue) > 0) {
+      this._counterInput.value = currentValue + 1;
+      this._updateSum();
+      this._updateLeftovers();
+      this._toggleCounterActivity();
+    }
+  }
+
+  _decreaseCounter() {
+    const currentValue = parseInt(this._counterInput.value)
+    if (currentValue > 1) {
+      this._counterInput.value = currentValue - 1;
+      this._updateSum();
+      this._updateLeftovers();
+      this._toggleCounterActivity();
+    }
+  }
+
+  _updateSum() {
+    const currentValue = parseInt(this._counterInput.value);
+    const roundedPriceAmount = Math.round(this._card.price * currentValue);
+    const roundedDiscountedPriceAmount = Math.round(this._card.price * (1 - this._card.disc) * currentValue);
+
+    this._cardSum.textContent = formatNumber(roundedDiscountedPriceAmount) + ' сом';
+    this._cardFullSum.textContent = formatNumber(roundedPriceAmount) + ' сом';
+  }
+
+  //generate/ update number of remaining products
+  _updateLeftovers() {
+    const currentValue = parseInt(this._counterInput.value);
+    if ((this._card.remainder - currentValue) < 3) {
+      this._cardRemainder.textContent = `Осталось ${this._card.remainder - currentValue} шт.`;
+      if (this._cardRemainder.style.display === 'none' ) {
+        this._cardRemainder.style.display = 'block'
+      }
+    } else {
+      this._cardRemainder.style.display = 'none';
+    }
+  }
+
+  //activate/deactivate counter btns
+  _toggleCounterActivity() {
+    const currentValue = parseInt(this._counterInput.value);
+
+    //toggle minus btn
+    if (currentValue < 2) {
+      this._minusBtn.classList.add('counter__btn_inactive');
+    } else if (this._minusBtn.classList.contains('counter__btn_inactive')) {
+      this._minusBtn.classList.remove('counter__btn_inactive');
+    }
+
+    //toggle plus btn
+    if ((this._card.remainder - currentValue) === 0) {
+      this._plusBtn.classList.add('counter__btn_inactive');
+    } else if (this._plusBtn.classList.contains('counter__btn_inactive')) {
+      this._plusBtn.classList.remove('counter__btn_inactive');
+    }
+  }
+
   _setEventListeners() {
     this._likeIcon.addEventListener('click', (e) => {
       this._toggleLike(e)
     });
     this._deletetBtn.addEventListener('click', () => {
       this._removeCard();
+    });
+    if (this._plusBtn) this._plusBtn.addEventListener('click', () => {
+      this._increaseCounter();
+    });
+    if (this._minusBtn) this._minusBtn.addEventListener('click', () => {
+      this._decreaseCounter();
     });
   }
 

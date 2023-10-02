@@ -16,6 +16,18 @@
   background-position: center;
   border: none;
   background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.counter__btn:hover {
+  background-color: var(--smoky);
+  border-radius: 5px;
+}
+
+.counter__btn_inactive {
+  opacity: 0.2;
+  cursor: auto;
 }
 
 /* .counter__btn::after {
@@ -62,7 +74,7 @@
   text-align: center;
   padding: 0;
   background: transparent;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
 }
 
 .counter__input::-webkit-outer-spin-button,
