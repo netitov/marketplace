@@ -30,30 +30,9 @@
 }
 
 .checkbox:hover .checkbox__input ~ .checkbox__checkmark {
-  /* background-color: #ccc; */
   opacity: 0.5;
 }
 
 .checkbox .checkbox__input:checked ~ .checkbox__checkmark {
   background-image: url('../images/checkbox.svg');
 }
-
-/* .checkbox__checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-} */
-
-/* .checkbox .checkbox__input:checked ~ .checkbox__checkmark:after {
-  display: block;
-} */
-
-/* .checkbox .checkbox__checkmark:after {
-  border: solid #fff;
-  border-width: 0 2px 2px 0;
-  height: 10px;
-  left: 8px;
-  top: 3px;
-  transform: rotate(45deg);
-  width: 5px;
-} */

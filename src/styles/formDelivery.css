@@ -1,0 +1,97 @@
+
+
+
+.form-delivery__header {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 16px;
+}
+
+.form-delivery__btn-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 8px;
+  margin-bottom: 24px;
+}
+
+.form-delivery__del-type {
+  background-color: transparent;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 16px;
+  height: 36px;
+  border-radius: 20px;
+  border: 2px solid rgba(203, 17, 171, 0.15);
+  transition: background-color 0.3s;
+}
+
+.form-delivery__del-type:hover:not(.form-delivery__del-type_active) {
+  background-color: var(--smoky);
+  cursor: pointer;
+}
+
+.form-delivery__del-type_active {
+  border: 2px solid var(--pink);
+}
+
+.form-delivery__adress-box {
+  margin-bottom: 49px;
+}
+
+.form-delivery__adress-btn-wrapper {
+  margin-top: 8px;
+}
+
+.form-delivery__adress-row {
+  min-height: 36px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-delivery__dlt-btn {
+  background-color: transparent;
+  border: none;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-image: url('../images/delete-grey.svg');
+  transition: background-image 0.3s;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 0;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.form-delivery__dlt-btn:hover {
+  background-image: url('../images/delete-orange.svg');
+}
+
+.form-delivery__radio-btn {
+  margin-right: 8px;
+}
+
+.form-delivery__rating {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  margin: 0;
+  padding: 0 0 8px 28px;
+  margin-top: -4px;
+}
+
+.form-delivery__rating-icon {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-image: url('../images/star.svg');
+}
+
+.form-delivery__rating-value {
+  color: #000;
+}
+
+.form-delivery__rating-pvz {
+  color: #A0A0A4;
+}

@@ -475,6 +475,59 @@
         </form>
       </main>
 
+      <!-- delivery popup -->
+      <div class="popup">
+        <div class="popup__container">
+
+          <!-- delivery-form header -->
+          <div class="popup__header">
+            <h2 class="popup__heading">Способ доставки</h2>
+            <button class="popup__close-btn" type="button"></button>
+          </div>
+
+          <!-- delivery form -->
+          <form class="popup__form form-delivery" novalidate>
+
+            <div class="popup__form-container">
+              <div class="form-delivery__btn-container">
+                <button class="form-delivery__del-type" type="button">В пункт выдачи</button>
+                <button class="form-delivery__del-type form-delivery__del-type_active" type="button">Курьером</button>
+              </div>
+
+              <p class="form-delivery__header">Мои адреса</p>
+
+              <!-- adress box -->
+              <div class="form-delivery__adress-box">
+
+                <div class="form-delivery__adress-btn-wrapper">
+                  <div class="form-delivery__adress-row">
+                    <label class="form-delivery__radio-btn radio-btn" title="Выбрать адрес">
+                      Бишкек, улица Табышалиева, 57
+                      <input type="radio" name="radio" checked>
+                      <span class="radio-btn__checkmark"></span>
+                    </label>
+                    <button class="form-delivery__dlt-btn" type="button"></button>
+                  </div>
+                  <p class="form-delivery__rating">
+                    <span class="form-delivery__rating-icon"></span>
+                    <span class="form-delivery__rating-value">4.99</span>
+                    <span class="form-delivery__rating-pvz">Пункт выдачи</span>
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- submit btn container -->
+            <div class="popup__sbt-btn-wrapper">
+              <button class="popup__sbt-btn" type="submit">Выбрать</button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
     </div>
   </body>
 </html>
