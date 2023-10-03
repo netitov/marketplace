@@ -29,16 +29,52 @@
   width: 20px;
   height: 20px;
   display: block;
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  background-image: url('../images/arrow.svg');
+  background-position: center;
+  border: none;
+  background-color: transparent;
 }
 
-.products__accordion-icon:hover path {
-  fill: #000;
+.products__accordion-icon:hover {
+  opacity: 0.6;
+}
+
+.products_hidden .products__accordion-icon {
+  transform: rotate(180deg);
+  margin-bottom: -3px;
 }
 
 .products__list {
   margin: 28px 0 0;
   padding: 0;
   list-style-type: none;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.products_hidden .products__list {
+  max-height: 0;
+}
+
+.products_hidden .products__checkbox {
+  display: none;
+}
+
+.products__accordion-summary {
+  display: none;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.products__accordion-summary-missing {
+  display: block;
+}
+
+.products_hidden .products__accordion-summary {
+  display: block;
+}
+

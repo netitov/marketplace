@@ -1,12 +1,13 @@
 import { formatNumber } from '../utils/utils';
 
 export default class Product {
-  constructor(card, elementTemplate, {handlePopupDelete, setLike}, missingCard) {
+  constructor(card, elementTemplate, { setLike }, missingCard, updateProductData, removeProduct) {
     this._elementTemplate = elementTemplate;
-    this._handlePopupDelete = handlePopupDelete;
     this._card = card;
     this._setLike = setLike;
     this._missingCard = missingCard;
+    this._updateProductData = updateProductData;
+    this._removeProduct = removeProduct;
   }
 
   _getTemplate() {
@@ -40,7 +41,6 @@ export default class Product {
     this._likeIcon = this._cardElement.querySelector('.product-card__actn-btn-like');
     this._plusBtn = this._cardElement.querySelector('.counter__btn_plus');
     this._minusBtn = this._cardElement.querySelector('.counter__btn_minus');
-    //this._counterInput = this._cardElement.querySelector('.counter__input');
 
     const card = this._card;
 
@@ -87,7 +87,10 @@ export default class Product {
   //remove card from the list
   _removeCard() {
     const cardElement = this._deletetBtn.closest('.product-card');
+    //if (!this._missingCard) this._updateSum();
     cardElement.remove();
+
+    this._removeProduct(this._card.title, this._missingCard);
   }
 
   _increaseCounter() {
@@ -144,6 +147,8 @@ export default class Product {
     //discount data
     this._cardSumDiscValue.textContent = `−${formatNumber(roundedDiscountValue)} сом`;
     this._cardSumCostDiscValue.textContent = `−${formatNumber(roundedCostDiscountValue)} сом`;
+
+    this._updateProductData({ product: this._card.title, price: roundedDiscountedPriceAmount, amount: currentValue });
   }
 
   //update number of remaining products
