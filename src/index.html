@@ -219,17 +219,17 @@
 
               <div class="cart-form__card-header-box">
                 <h3 class="cart-form__card-header">Способ доставки</h3>
-                <button class="cart-form__card-btn">Изменить</button>
+                <button class="cart-form__card-btn" type="button">Изменить</button>
               </div>
 
               <div class="cart-delivery__data">
 
-                <!-- adress row -->
+                <!-- address row -->
                 <div class="cart-delivery__row">
                   <span class="cart-delivery__title">Пункт выдачи</span>
                   <div class="cart-delivery__value">
                     <span>Бишкек, улица Ахматбека Суюмбаева, 12/1</span>
-                    <p class="cart-delivery__adress-data">
+                    <p class="cart-delivery__address-data">
                       <span class="cart-delivery__rating-icon"></span>
                       <span class="cart-delivery__rating-value">4,99</span>
                       Ежедневно с 10 до 21
@@ -321,7 +321,7 @@
             <div class="cart-form__card-wrapper cart-payment">
               <div class="cart-form__card-header-box">
                 <h3 class="cart-form__card-header">Способ оплаты</h3>
-                <button class="cart-form__card-btn">Изменить</button>
+                <button class="cart-form__card-btn" type="button">Изменить</button>
               </div>
               <div class="cart-payment__card">
                 <span class="cart-payment__card-icon"></span>
@@ -476,7 +476,7 @@
       </main>
 
       <!-- delivery popup -->
-      <div class="popup">
+      <div class="popup popup-delivery">
         <div class="popup__container">
 
           <!-- delivery-form header -->
@@ -490,32 +490,37 @@
 
             <div class="popup__form-container">
               <div class="form-delivery__btn-container">
-                <button class="form-delivery__del-type" type="button">В пункт выдачи</button>
-                <button class="form-delivery__del-type form-delivery__del-type_active" type="button">Курьером</button>
+                <button class="form-delivery__del-type form-delivery__del-pickup" type="button">В пункт выдачи</button>
+                <button class="form-delivery__del-type form-delivery__del-courier form-delivery__del-type_active" type="button">Курьером</button>
               </div>
 
               <p class="form-delivery__header">Мои адреса</p>
 
               <!-- adress box -->
-              <div class="form-delivery__adress-box">
+              <div class="form-delivery__adress-box form-delivery__adress-box-courier">
 
-                <div class="form-delivery__adress-btn-wrapper">
-                  <div class="form-delivery__adress-row">
-                    <label class="form-delivery__radio-btn radio-btn" title="Выбрать адрес">
-                      Бишкек, улица Табышалиева, 57
-                      <input type="radio" name="radio" checked>
-                      <span class="radio-btn__checkmark"></span>
-                    </label>
-                    <button class="form-delivery__dlt-btn" type="button"></button>
+                <template id="adressTemplate">
+
+                  <div class="form-delivery__adress-wrapper">
+                    <div class="form-delivery__adress-row">
+                      <label class="form-delivery__radio-btn radio-btn" title="Выбрать адрес">
+                        <span class="radio-btn__value"></span>
+                        <input type="radio" class="radio-btn__input">
+                        <span class="radio-btn__checkmark"></span>
+                      </label>
+                      <button class="form-delivery__dlt-btn" type="button"></button>
+                    </div>
+                    <p class="form-delivery__rating">
+                      <span class="form-delivery__rating-icon"></span>
+                      <span class="form-delivery__rating-value"></span>
+                      <span class="form-delivery__rating-pvz">Пункт выдачи</span>
+                    </p>
                   </div>
-                  <p class="form-delivery__rating">
-                    <span class="form-delivery__rating-icon"></span>
-                    <span class="form-delivery__rating-value">4.99</span>
-                    <span class="form-delivery__rating-pvz">Пункт выдачи</span>
-                  </p>
-                </div>
+
+                </template>
 
               </div>
+              <div class="form-delivery__adress-box form-delivery__adress-box-pickup form-delivery__adress-box_inactive"></div>
             </div>
 
             <!-- submit btn container -->

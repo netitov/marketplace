@@ -39,7 +39,7 @@
   background-image: url('../images/star.svg');
 }
 
-.cart-delivery__adress-data {
+.cart-delivery__address-data {
   display: flex;
   align-items: center;
   font-size: 13px;

@@ -49,7 +49,7 @@ export default class Product {
     this._cardTitle.alt = card.title;
     this._cardBrand.textContent = card.brand ? card.brand : '';
 
-    /* only for products in stock */
+    //only for products in stock
     if (!this._missingCard) {
       this._cardStore.textContent = card.store;
       this._cardCompany.textContent = card.company;

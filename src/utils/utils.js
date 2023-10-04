@@ -1,5 +1,10 @@
 export const productsContainer = document.querySelector('.products__list');
 export const missingProductsContainer = document.querySelector('.products__list_missing');
+export const deliveryChangeBtn = document.querySelector('.cart-form__card-btn');
+export const deliveryPopupSelector = document.querySelector('.popup-delivery');
+export const courierAddressBox = document.querySelector('.form-delivery__adress-box-courier');
+export const pickupAddressBox = document.querySelector('.form-delivery__adress-box-pickup');
+
 
 export const formatNumber = (number) => {
   const strNumber = number.toString();

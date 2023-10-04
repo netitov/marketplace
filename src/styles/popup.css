@@ -1,5 +1,5 @@
 .popup {
-  /* visibility: hidden; */
+  visibility: hidden;
   background-color: rgba(5,0,10,.3);
   display: flex;
   height: 100%;
@@ -11,10 +11,14 @@
   align-items: center;
   justify-content: center;
   z-index: 10;
+  opacity: 0;
+  transition: visibility 0s 0.2s, opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .popup_opened {
+  transition: visibility 0s 0s, opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   visibility: visible;
+  opacity: 1;
 }
 
 .popup__container {

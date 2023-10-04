@@ -6,6 +6,7 @@
   font-size: 13px;
   font-weight: 700;
   line-height: 16px;
+  margin-bottom: 8px;
 }
 
 .form-delivery__btn-container {
@@ -36,10 +37,48 @@
 }
 
 .form-delivery__adress-box {
-  margin-bottom: 49px;
+  margin-bottom: 16px;
+  margin-bottom: 16px;
+  height: 183px;
+  overflow: auto;
+  position: relative;
 }
 
-.form-delivery__adress-btn-wrapper {
+.form-delivery__adress-box-pickup {
+  margin-right: -9px;
+  padding-right: 5px;
+}
+
+.form-delivery__adress-box::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.form-delivery__adress-box::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+/* Handle */
+.form-delivery__adress-box::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.form-delivery__adress-box::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.form-delivery__adress-box-courier {
+  /* padding-bottom: 33px; */
+}
+
+.form-delivery__adress-box_inactive {
+  display: none;
+}
+
+.form-delivery__adress-wrapper {
   margin-top: 8px;
 }
 
@@ -79,6 +118,11 @@
   margin: 0;
   padding: 0 0 8px 28px;
   margin-top: -4px;
+  display: none;
+}
+
+.form-delivery__adress-box-pickup .form-delivery__rating {
+  display: block;
 }
 
 .form-delivery__rating-icon {

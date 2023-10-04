@@ -99,3 +99,43 @@ export const missingProducts = [
   },
 
 ];
+
+export const addressesData = [
+  {
+    address: 'Бишкек, улица Табышалиева, 57',
+    checked: true,
+    type: 'courier'
+  },
+  {
+    address: 'Бишкек, улица Жукеева-Пудовкина, 77/1',
+    checked: false,
+    type: 'courier'
+  },
+  {
+    address: 'Бишкек, микрорайон Джал, улица Ахунбаева Исы, 67/1',
+    checked: false,
+    type: 'courier'
+
+  }
+];
+
+export const pickupAddressesData = [
+  {
+    address: 'г. Бишкек, микрорайон Джал, улица Ахунбаева Исы, д. 67/1',
+    rating: 0,
+    checked: true,
+    type: 'pickUp'
+  },
+  {
+    address: 'г. Бишкек, микрорайон Джал, улица Ахунбаева Исы, д. 67/1',
+    rating: 4.99,
+    checked: false,
+    type: 'pickUp'
+  },
+  {
+    address: 'г. Бишкек, улица Табышалиева, д. 57',
+    rating: 4.99,
+    checked: false,
+    type: 'pickUp'
+  }
+];
