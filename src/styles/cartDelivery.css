@@ -23,7 +23,10 @@
   line-height: 24px;
   display: inline-block;
   width: 153px;
+  flex-shrink: 0;
 }
+
+.cart-delivery__address {}
 
 .cart-delivery__value {
   font-size: 16px;
@@ -47,9 +50,14 @@
   margin: 4px 0 0 0;
 }
 
-.cart-delivery__rating-value {
-  margin: 0 8px 0 2px;
+.cart-delivery__address-data_inactive {
+  display: none;
 }
+
+.cart-delivery__rating-value {
+  margin: 0 8px 0 4px;
+}
+
 
 .cart-delivery__images {
   margin: 0;

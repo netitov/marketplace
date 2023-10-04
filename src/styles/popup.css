@@ -68,8 +68,13 @@
   cursor: pointer;
 }
 
-.popup__sbt-btn:hover {
-  opacity: 0.6;
+.popup__sbt-btn_inactive {
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.popup__sbt-btn:hover:not(.popup__sbt-btn_inactive) {
+  opacity: 0.7;
 }
 
 .popup__close-btn {

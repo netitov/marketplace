@@ -11,7 +11,8 @@ import { productsContainer, missingProductsContainer, deliveryChangeBtn,
 const productArray = [];
 const missingProductArray = missingProducts;
 
-const deliveryPopup = new DeliveryPopup(deliveryPopupSelector, '#adressTemplate', toggleAddresses);
+const deliveryPopup = new DeliveryPopup(deliveryPopupSelector, '#adressTemplate',
+toggleAddresses, addressesData[0], pickupAddressesData[0]);
 
 //main products object
 const couirerAddresses = new AddressList ({

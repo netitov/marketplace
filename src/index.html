@@ -228,7 +228,7 @@
                 <div class="cart-delivery__row">
                   <span class="cart-delivery__title">Пункт выдачи</span>
                   <div class="cart-delivery__value">
-                    <span>Бишкек, улица Ахматбека Суюмбаева, 12/1</span>
+                    <span class="cart-delivery__address">Бишкек, улица Ахматбека Суюмбаева, 12/1</span>
                     <p class="cart-delivery__address-data">
                       <span class="cart-delivery__rating-icon"></span>
                       <span class="cart-delivery__rating-value">4,99</span>
@@ -490,14 +490,14 @@
 
             <div class="popup__form-container">
               <div class="form-delivery__btn-container">
-                <button class="form-delivery__del-type form-delivery__del-pickup" type="button">В пункт выдачи</button>
-                <button class="form-delivery__del-type form-delivery__del-courier form-delivery__del-type_active" type="button">Курьером</button>
+                <button class="form-delivery__del-type form-delivery__del-pickup form-delivery__del-type_active" type="button">В пункт выдачи</button>
+                <button class="form-delivery__del-type form-delivery__del-courier" type="button">Курьером</button>
               </div>
 
               <p class="form-delivery__header">Мои адреса</p>
 
               <!-- adress box -->
-              <div class="form-delivery__adress-box form-delivery__adress-box-courier">
+              <div class="form-delivery__adress-box form-delivery__adress-box-courier form-delivery__adress-box_inactive">
 
                 <template id="adressTemplate">
 
@@ -520,7 +520,7 @@
                 </template>
 
               </div>
-              <div class="form-delivery__adress-box form-delivery__adress-box-pickup form-delivery__adress-box_inactive"></div>
+              <div class="form-delivery__adress-box form-delivery__adress-box-pickup"></div>
             </div>
 
             <!-- submit btn container -->
