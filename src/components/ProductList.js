@@ -59,8 +59,8 @@ export default class ProductList {
     this._accordionAmountMissing.textContent = `${verb} · ${formatNumber(arr.length)} ${declenWords(arr.length, productWords)}`;
   }
 
-  addItem(element) {
-    this._container.prepend(element);
+  addItem(element, box) {
+    box.prepend(element);
   }
 
   //close and open accordion

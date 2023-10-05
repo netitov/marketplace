@@ -1,18 +1,21 @@
 import { formatNumber } from '../utils/utils';
 
 export default class Product {
-  constructor(card, elementTemplate, { setLike }, missingCard, updateProductData, removeProduct) {
+  constructor(card, elementTemplate, { setLike }, missingCard, updateProductData, removeProduct, updateThumbnails) {
     this._elementTemplate = elementTemplate;
+    //this._thumbnailTemplate = thumbnailTemplate;
     this._card = card;
     this._setLike = setLike;
     this._missingCard = missingCard;
     this._updateProductData = updateProductData;
     this._removeProduct = removeProduct;
+    this._updateThumbnails = updateThumbnails;
+    this._prevValue;
   }
 
-  _getTemplate() {
+  _getTemplate(template) {
     const cardElement = document
-      .querySelector(this._elementTemplate)
+      .querySelector(template)
       .content
       .cloneNode(true);
 
@@ -20,7 +23,7 @@ export default class Product {
   }
 
   generateProduct() {
-    this._cardElement = this._getTemplate();
+    this._cardElement = this._getTemplate(this._elementTemplate);
 
     this._cardImg = this._cardElement.querySelector('.product-card__img');
     this._cardTitle = this._cardElement.querySelector('.product-card__name');
@@ -54,7 +57,8 @@ export default class Product {
       this._cardStore.textContent = card.store;
       this._cardCompany.textContent = card.company;
       this._cardCompanyData.textContent = card.companyData;
-      this._cardAmount.value = card.amount;
+      this._cardAmount.value = card.amount.reduce((acc, current) => acc + current.amount, 0);
+      this._prevValue = card.amount.reduce((acc, current) => acc + current.amount, 0)
 
       this._updateSum();
       this._updateLeftovers();
@@ -90,26 +94,32 @@ export default class Product {
     //if (!this._missingCard) this._updateSum();
     cardElement.remove();
 
-    this._removeProduct(this._card.title, this._missingCard);
+    this._removeProduct(this._card.title, this._missingCard, this._card.id);
   }
 
   _increaseCounter() {
     const currentValue = parseInt(this._cardAmount.value);
     if ((this._card.remainder - currentValue) > 0) {
-      this._cardAmount.value = currentValue + 1;
+      const newValue = currentValue + 1;
+      this._cardAmount.value = newValue;
+      this._prevValue = newValue;
       this._updateSum();
       this._updateLeftovers();
       this._toggleCounterActivity();
+      this._updateThumbnails(this._card, newValue, currentValue);
     }
   }
 
   _decreaseCounter() {
     const currentValue = parseInt(this._cardAmount.value)
     if (currentValue > 1) {
-      this._cardAmount.value = currentValue - 1;
+      const newValue = currentValue - 1;
+      this._cardAmount.value = newValue;
+      this._prevValue = newValue;
       this._updateSum();
       this._updateLeftovers();
       this._toggleCounterActivity();
+      this._updateThumbnails(this._card, newValue, currentValue);
     }
   }
 
@@ -128,7 +138,8 @@ export default class Product {
     this._updateSum();
     this._updateLeftovers();
     this._toggleCounterActivity();
-
+    this._updateThumbnails(this._card, parseInt(this._cardAmount.value, 10), this._prevValue);
+    this._prevValue = parseInt(this._cardAmount.value, 10);
   }
 
   //update product sum when amount is changed

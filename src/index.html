@@ -243,60 +243,42 @@
                   <span class="cart-delivery__value">Бесплатно</span>
                 </div>
 
-                <!-- delivery date row -->
-                <div class="cart-delivery__row">
-                  <span class="cart-delivery__title">5—6 февраля</span>
-                  <div class="cart-delivery__value">
-                    <ul class="cart-delivery__images">
-                      <li class="cart-delivery__image">
-                        <img
-                          src="<%=require('./images/photo1-small.png')%>"
-                          alt="Футболка UZcotton мужская"
-                        >
-                        <div class="cart-delivery__amount-box">
-                          <span class="cart-delivery__product-amount">1</span>
-                        </div>
-                      </li>
-                      <li class="cart-delivery__image">
-                        <img
-                          src="<%=require('./images/photo2-small.png')%>"
-                          alt="Футболка UZcotton мужская"
-                        >
-                        <div class="cart-delivery__amount-box">
-                          <span class="cart-delivery__product-amount">184</span>
-                        </div>
-                      </li>
-                      <li class="cart-delivery__image">
-                        <img
-                          src="<%=require('./images/photo3-small.png')%>"
-                          alt="Футболка UZcotton мужская"
-                        >
-                        <div class="cart-delivery__amount-box">
-                          <span class="cart-delivery__product-amount">2</span>
-                        </div>
-                      </li>
-                    </ul>
+                <div div class="cart-delivery__container">
 
-                  </div>
-                </div>
+                  <!-- delivery date row -->
+                  <template id="delivery-date-template">
+                    <div class="cart-delivery__row">
+                      <span class="cart-delivery__title cart-delivery__date"></span>
+                      <div class="cart-delivery__value">
+                        <ul class="cart-delivery__images">
+                        </ul>
+                      </div>
+                    </div>
+                  </template>
 
-                <!-- delivery second date row -->
-                <div class="cart-delivery__row">
-                  <span class="cart-delivery__title">7—8 февраля</span>
-                  <div class="cart-delivery__value">
-                    <ul class="cart-delivery__images">
-                      <li class="cart-delivery__image">
-                        <img
-                          src="<%=require('./images/photo2-small.png')%>"
-                          alt="Футболка UZcotton мужская"
-                        >
-                        <div class="cart-delivery__amount-box">
-                          <span class="cart-delivery__product-amount">16</span>
-                        </div>
-                      </li>
-                    </ul>
+                  <!-- thumbnail -->
+                  <template id="thumbnail">
+                    <li class="cart-delivery__image-box">
+                      <img
+                        src="#"
+                        alt=""
+                        class="cart-delivery__image"
+                      >
+                      <div class="cart-delivery__amount-box">
+                        <span class="cart-delivery__product-amount">1</span>
+                      </div>
+                    </li>
+                  </template>
 
-                  </div>
+                  <!-- delivery second date row -->
+                  <!-- <div class="cart-delivery__row">
+                    <span class="cart-delivery__title">7—8 февраля</span>
+                    <div class="cart-delivery__value">
+                      <ul class="cart-delivery__images">
+                      </ul>
+                    </div>
+                  </div> -->
+
                 </div>
 
               </div>

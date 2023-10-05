@@ -1,55 +1,97 @@
-import photo1 from '../images/photo1.jpg';
-import photo2 from '../images/photo2.jpg';
-import photo3 from '../images/photo3.jpg';
+import photo1 from '../images/photo1.webp';
+import photo2 from '../images/photo2.webp';
+import photo3 from '../images/photo3.webp';
+
+import photo1Small from '../images/photo1-small.webp';
+import photo2Small from '../images/photo2-small.webp';
+import photo3Small from '../images/photo3-small.webp';
 
 export const products = [
   {
     link: photo1,
+    id: 'element1',
     title: 'Футболка UZcotton мужская',
     brand: '',
     props: ['Цвет: белый', 'Размер: 56'],
     store: 'Коледино WB',
     company: 'OOO Вайлдберриз',
     companyData: 'Test',
-    amount: 1,
+    amount: [{ date: '5—6 февраля', amount: 1 }],
+    inOneStock: 4,
     remainder: 3,
     price: 1051,
     disc: 0.5033,
     costDisc: 0.1,
-    missing: true
+    missing: true,
+    thumbnail: photo1Small
   },
   {
     link: photo2,
+    id: 'element2',
     title: 'Силиконовый чехол картхолдер (отверстия) для карт, прозрачный кейс бампер на Apple iPhone XR',
     brand: 'MobiSafe',
     props: ['Цвет: прозрачный'],
     store: 'Коледино WB',
     company: 'OOO Мегапрофстиль',
     companyData: 'Company data will be here',
-    amount: 200,
+    amount: [{ date: '5—6 февраля', amount: 184 }, { date: '7—8 февраля', amount: 16 }],
+    inOneStock: 184,
     remainder: 1000000,
     price: 11500.235,
     disc: 0.0869548,
     costDisc: 0.1,
-    missing: true
+    missing: true,
+    thumbnail: photo2Small
   },
   {
     link: photo3,
+    id: 'element3',
     title: 'Карандаши цветные Faber-Castell "Замок", набор 24 цвета, заточенные, шестигранные',
     brand: 'Faber-Castell',
     props: [],
     store: 'Коледино WB',
     company: 'OOO Вайлдберриз',
     companyData: 'Company data will be here',
-    amount: 2,
+    amount: [{ date: '5—6 февраля', amount: 2 }],
+    inOneStock: 6,
     remainder: 4,
     price: 475,
     disc: 0.48,
     costDisc: 0.1,
-    missing: true
+    missing: true,
+    thumbnail: photo3Small
   },
 
 ];
+
+const groupedProducts = {};
+
+//create array of delivery dates
+products.forEach(product => {
+  const amounts = product.amount;
+
+  amounts.forEach(amountObj => {
+    const { date, amount } = amountObj;
+
+    const productInfo = {
+      id: product.id,
+      amount: amount,
+      title: product.title,
+      thumbnail: product.thumbnail
+    };
+
+    if (!groupedProducts[date]) {
+      groupedProducts[date] = {
+        date: date,
+        products: [productInfo]
+      };
+    } else {
+      groupedProducts[date].products.push(productInfo);
+    }
+  });
+});
+
+export const deliveryDates = Object.values(groupedProducts);
 
 export const missingProducts = [
   {

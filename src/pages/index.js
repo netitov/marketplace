@@ -3,13 +3,18 @@ import Product from '../components/Product.js'
 import ProductList from '../components/ProductList.js'
 import DeliveryPopup from '../components/DeliveryPopup';
 import AddressList from '../components/AddressList';
-import { products, missingProducts, addressesData, pickupAddressesData } from '../utils/data';
+import DeliveryDates from '../components/DeliveryDates';
+import { products, missingProducts, addressesData, pickupAddressesData, deliveryDates } from '../utils/data';
 import { productsContainer, missingProductsContainer, deliveryChangeBtn,
-  deliveryPopupSelector, courierAddressBox, pickupAddressBox } from '../utils/utils';
+  deliveryPopupSelector, courierAddressBox, pickupAddressBox, thumbnailBox, deliveryContainer } from '../utils/utils';
+
 
 //products in cart
 const productArray = [];
 const missingProductArray = missingProducts;
+
+//delivery dates and thumbnails
+const deliveryDatesList = new DeliveryDates(deliveryDates, deliveryContainer, '#delivery-date-template');
 
 const deliveryPopup = new DeliveryPopup(deliveryPopupSelector, '#adressTemplate',
 toggleAddresses, addressesData[0], pickupAddressesData[0]);
@@ -29,7 +34,7 @@ const pickupAddresses = new AddressList ({
 const productsList = new ProductList ({
   items: products,
   renderer: (items) => {
-    addProduct(items, '#productTemplate', productsList, false);
+    addProduct(items, '#productTemplate', productsList, false, productsContainer);
   }
 }, productsContainer,  '#products-main');
 
@@ -37,21 +42,21 @@ const productsList = new ProductList ({
 const missingProductsList = new ProductList ({
   items: missingProducts,
   renderer: (items) => {
-    addProduct(items, '#missingProductTemplate', missingProductsList, true);
+    addProduct(items, '#missingProductTemplate', missingProductsList, true, missingProductsContainer);
   }
 }, missingProductsContainer, '#products-missing');
 
 
 //add product to list
-function addProduct(card, container, copy, missingProduct) {
-  const cardClass = new Product(card, container, {
+function addProduct(card, template, copy, missingProduct, appendBox) {
+  const cardClass = new Product(card, template, {
     setLike: (e, card) => {
       setLike(e, card)
     }
-  }, missingProduct, updateProductData, removeProduct);
+  }, missingProduct, updateProductData, removeProduct, updateThumbnails);
 
   const cardElement = cardClass.generateProduct();
-  copy.addItem(cardElement);
+  copy.addItem(cardElement, appendBox);
 }
 
 function renderAddress(item, copy) {
@@ -71,7 +76,7 @@ function updateProductData(obj) {
 }
 
 //remove product from list
-function removeProduct(productName, missingProduct) {
+function removeProduct(productName, missingProduct, id) {
   const products = missingProduct ? missingProductArray : productArray;
 
   const index = products.findIndex(i => i.product === productName);
@@ -81,7 +86,13 @@ function removeProduct(productName, missingProduct) {
     missingProductsList.removeAccordionItem(products);
   } else {
     productsList.removeAccordionItem(products);
+    deliveryDatesList.removeThumbnail(id);
   }
+}
+
+//update products amount in thumbnails
+function updateThumbnails(card, newValue, currentValue) {
+  deliveryDatesList.updateThumbnails(card, newValue, currentValue);
 }
 
 //toggle addresses type: courier or pick up
@@ -94,6 +105,7 @@ missingProductsList.renderItems();
 productsList.renderItems();
 couirerAddresses.renderItems();
 pickupAddresses.renderItems();
+deliveryDatesList.renderItems();
 
 //open delivery popup
 deliveryChangeBtn.addEventListener('click', () => {
