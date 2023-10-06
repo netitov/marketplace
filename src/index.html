@@ -52,7 +52,7 @@
 
       <!-- cart -->
       <main class="main">
-        <form class="main__cart cart-form">
+        <form class="main__cart cart-form" id="cart-form" novalidate>
 
           <!-- cart-content -->
           <div class="cart-form__content">
@@ -313,33 +313,34 @@
               <div class="user__data">
 
                 <div class="user__input-container user__input-container_username">
-                  <input class="user__input" type="text" required maxlength="30" id="username">
+                  <input class="user__input" type="text" id="username" name="username">
                   <label class="user__label" for="username">Имя</label>
                   <span class="user__input-error">Заполните поле</span>
                 </div>
 
                 <div class="user__input-container user__input-container_userlastname">
-                  <input class="user__input" type="text" required maxlength="30" id="userlastname">
+                  <input class="user__input" type="text" id="userlastname" required name="userlastname">
                   <label class="user__label" for="userlastname">Фамилия</label>
                   <span class="user__input-error">Заполните поле</span>
                 </div>
 
                 <div class="user__input-container user__input-container_email">
-                  <input class="user__input" type="email" required maxlength="30" id="email">
+                  <input class="user__input" type="email" id="email" name="email">
                   <label class="user__label" for="email">Почта</label>
                   <span class="user__input-error">Заполните поле</span>
                 </div>
 
                 <div class="user__input-container user__input-container_phone">
-                  <input class="user__input" type="tel" required maxlength="30" id="phone">
+                  <input class="user__input" type="tel" id="phone" name="phone">
                   <label class="user__label" for="phone">Телефон</label>
                   <span class="user__input-error">Заполните поле</span>
                 </div>
 
                 <div class="user__input-container user__input-container_inn">
-                  <input class="user__input" type="text" id="inn">
+                  <input class="user__input" type="text" id="inn" name="inn" maxlength="14">
                   <label class="user__label" for="inn">ИНН</label>
                   <span class="user__input-info">Для таможенного оформления</span>
+                  <span class="user__input-error">Заполните поле</span>
                 </div>
 
               </div>
@@ -434,7 +435,7 @@
                   </div>
                 </div>
 
-                <button type="button" class="order__sbt-btn">Заказать</button>
+                <button type="submit" class="order__sbt-btn" form="cart-form">Заказать</button>
                 <div class="order__oferta-box">
                   <span class="order__oferta-icon"></span>
                   <p class="order__paragr order__oferta">Соглашаюсь

@@ -1,9 +1,10 @@
 .user__data {
-  grid-gap: 35px 24px;
-  display: grid;
-  grid-template-areas:
+  gap: 35px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  /* grid-template-areas:
     "username username username userlastname userlastname userlastname"
-    "email email phone phone inn inn";
+    "email email phone phone inn inn"; */
   margin-top: 34px;
   max-width: 700px;
   width: 100%;
@@ -25,6 +26,11 @@
   transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   z-index: 1;
+}
+
+.user__input_error {
+  color: var(--orange);
+  border-color: var(--orange);
 }
 
 .user__input-container {
@@ -49,39 +55,50 @@
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.user__input:focus ~ .user__label, .user__input:valid ~ .user__label {
+.user__input:focus ~ .user__label, .user__label_filled {
   transform: translateY(-18px);
   font-size: 13px;
   line-height: 16px;
 }
 
 .user__input-container_username {
-  grid-area: username;
+  /* grid-area: username; */
+  width: calc(100% / 2 - 12px);
 }
 
 .user__input-container_userlastname {
-  grid-area: userlastname;
+  /* grid-area: userlastname; */
+  width: calc(100% / 2 - 12px);
 }
 
 .user__input-container_email {
-  grid-area: email;
+  /* grid-area: email; */
+  width: calc(100% / 3 - 16px);
 }
 
 .user__input-container_phone {
-  grid-area: phone;
+  /* grid-area: phone; */
+  width: calc(100% / 3 - 16px);
 }
 
 .user__input-container_inn {
-  grid-area: inn;
+ /*  grid-area: inn; */
+ width: calc(100% / 3 - 16px);
 }
+
 
 .user__input-error {
   color: var(--orange);
   font-size: 12px;
   line-height: 14px;
-  visibility: hidden;
+  /* visibility: hidden; */
   opacity: 0;
   transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.user__input-error_active {
+  /* visibility: visible; */
+  opacity: 1;
 }
 
 .user__input:focus ~ .user__label, .user__input:invalid ~ .user__input-error {

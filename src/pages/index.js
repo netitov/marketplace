@@ -5,11 +5,12 @@ import DeliveryPopup from '../components/DeliveryPopup';
 import AddressList from '../components/AddressList';
 import DeliveryDates from '../components/DeliveryDates';
 import PaymentPopup from '../components/PaymentPopup';
+import { FormValidator } from '../components/FormValidator';
 import { products, missingProducts, addressesData, pickupAddressesData, deliveryDates, bankCards } from '../utils/data';
 import {
   productsContainer, missingProductsContainer, deliveryChangeBtn,
-  deliveryPopupSelector, courierAddressBox, pickupAddressBox, thumbnailBox, deliveryContainer, paymentChangeBtns,
-  paymentPopupSelector, cardsContainerSelector
+  deliveryPopupSelector, courierAddressBox, pickupAddressBox, deliveryContainer, paymentChangeBtns,
+  paymentPopupSelector, cardsContainerSelector, cartFormElement, cartFormElements, inputErrros
 } from '../utils/utils';
 
 //products in cart
@@ -18,11 +19,11 @@ const missingProductArray = missingProducts;
 
 //delivery dates and thumbnails
 const deliveryDatesList = new DeliveryDates(deliveryDates, deliveryContainer, '#delivery-date-template');
-
 const paymentPopup = new PaymentPopup(paymentPopupSelector, '#bank-card-template', bankCards, cardsContainerSelector);
-
 const deliveryPopup = new DeliveryPopup(deliveryPopupSelector, '#adressTemplate',
-toggleAddresses, addressesData[0], pickupAddressesData[0]);
+  toggleAddresses, addressesData[0], pickupAddressesData[0])
+;
+const formValidation = new FormValidator(cartFormElements, cartFormElement, inputErrros)
 
 //main products object
 const couirerAddresses = new AddressList ({
@@ -129,3 +130,4 @@ productsList.setEventListeners();
 missingProductsList.setEventListeners();
 deliveryPopup.setEventListeners();
 paymentPopup.setEventListeners();
+formValidation.enableValidation();

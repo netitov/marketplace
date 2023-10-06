@@ -9,6 +9,7 @@ export const deliveryContainer = document.querySelector('.cart-delivery__contain
 export const paymentChangeBtns = document.querySelectorAll('.edit-card');
 export const paymentPopupSelector = document.querySelector('.popup-payment');
 export const cardsContainerSelector = document.querySelector('.form-payment__list');
+export const cartFormElement = document.querySelector('.cart-form');
 
 export const formatNumber = (number) => {
   const strNumber = number.toString();
@@ -26,4 +27,55 @@ export const declenWords = (value, words) => {
 	return words[2];
 }
 
-export const productWords = ['товар', 'товара', 'товаров']
+export const productWords = ['товар', 'товара', 'товаров'];
+
+export const cartFormElements = {
+  formSelector: '.cart-form',
+  inputSelector: '.user__input',
+  submitButtonSelector: '.order__sbt-btn',
+  inputErrorClass: 'user__input_error',
+  errorClass: 'user__input-error_active'
+}
+
+export const inputErrros = [
+  {
+    input: 'username',
+    errorType: 'filling',
+    errorText: 'Укажите имя'
+  },
+  {
+    input: 'userlastname',
+    errorType: 'filling',
+    errorText: 'Введите фамилию'
+  },
+  {
+    input: 'email',
+    errorType: 'filling',
+    errorText: 'Укажите электронную почту'
+  },
+  {
+    input: 'phone',
+    errorType: 'filling',
+    errorText: 'Укажите номер телефона'
+  },
+  {
+    input: 'inn',
+    errorType: 'filling',
+    errorText: 'Укажите ИНН'
+  },
+  {
+    input: 'email',
+    errorType: 'validity',
+    errorText: 'Проверьте адрес электронной почты'
+  },
+  {
+    input: 'phone',
+    errorType: 'validity',
+    errorText: 'Формат: +9 999 999 99 99'
+  },
+  {
+    input: 'inn',
+    errorType: 'validity',
+    errorText: 'Проверьте ИНН'
+  }
+];
