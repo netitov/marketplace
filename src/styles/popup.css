@@ -28,6 +28,12 @@
   max-width: 500px;
 }
 
+.popup-payment > .popup__container {
+  width: 400px;
+}
+
+
+
 .popup__header {
   display: flex;
   justify-content: space-between;

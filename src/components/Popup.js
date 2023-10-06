@@ -11,7 +11,7 @@ export default class Popup {
     this._popupSelector.classList.add('popup_opened');
 
     document.body.style.overflowY = 'hidden';
-    this._pageElement.style.paddingRight= '17px';
+    this._pageElement.style.paddingRight= '15.5px';
 
     document.addEventListener('mousedown', this._handleOverlayClose);
     document.addEventListener('keydown', this._handleEscClose);
@@ -44,8 +44,7 @@ export default class Popup {
   }
 
   setEventListeners () {
-    this._popupSelector.querySelector('.popup__close-btn').addEventListener('click',
-      this.closePopup)
+    this._popupSelector.querySelector('.popup__close-btn').addEventListener('click', this.closePopup)
   }
 
 }

@@ -6,6 +6,11 @@ import photo1Small from '../images/photo1-small.webp';
 import photo2Small from '../images/photo2-small.webp';
 import photo3Small from '../images/photo3-small.webp';
 
+import mir from '../images/mir.svg';
+import visa from '../images/visa.svg';
+import master from '../images/mastercard.svg';
+import maestro from '../images/maestro.svg';
+
 export const products = [
   {
     link: photo1,
@@ -180,4 +185,37 @@ export const pickupAddressesData = [
     checked: false,
     type: 'pickUp'
   }
+];
+
+export const bankCards = [
+  {
+    number: '1234 56•• •••• 1234',
+    logo: mir,
+    name: 'Карта Мир',
+    validity: '01/30',
+    checked: true
+  },
+  {
+    number: '1234 56•• •••• 1234',
+    logo: visa,
+    name: 'Карта Visa',
+    validity: '01/30',
+    checked: false
+  },
+  {
+    number: '1234 56•• •••• 1234',
+    logo: master,
+    name: 'Карта MasterCard',
+    validity: '01/30',
+    checked: false
+  },
+  {
+    number: '1234 56•• •••• 1234',
+    logo: maestro,
+    name: 'Maestro',
+    validity: '01/30',
+    checked: false
+  },
+
+
 ];

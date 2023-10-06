@@ -136,7 +136,7 @@
   margin-bottom: 12px;
 }
 
-.order__card-icon {
+/* .order__card-icon {
   display: block;
   background-image: url('../images/mir.svg');
   width: 30px;
@@ -146,6 +146,17 @@
   border-radius: 4px;
   background-repeat: no-repeat;
   background-position: center;
+  margin-right: 8px;
+} */
+
+.order__icon-box {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 32px;
+  height: 24px;
+  background-color: var(--smoky);
+  border-radius: 4px;
   margin-right: 8px;
 }
 

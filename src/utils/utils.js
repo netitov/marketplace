@@ -6,6 +6,9 @@ export const courierAddressBox = document.querySelector('.form-delivery__adress-
 export const pickupAddressBox = document.querySelector('.form-delivery__adress-box-pickup');
 export const thumbnailBox = document.querySelector('.cart-delivery__images');
 export const deliveryContainer = document.querySelector('.cart-delivery__container');
+export const paymentChangeBtns = document.querySelectorAll('.edit-card');
+export const paymentPopupSelector = document.querySelector('.popup-payment');
+export const cardsContainerSelector = document.querySelector('.form-payment__list');
 
 export const formatNumber = (number) => {
   const strNumber = number.toString();

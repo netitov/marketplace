@@ -259,25 +259,12 @@
                   <!-- thumbnail -->
                   <template id="thumbnail">
                     <li class="cart-delivery__image-box">
-                      <img
-                        src="#"
-                        alt=""
-                        class="cart-delivery__image"
-                      >
+                      <img src="#" alt="" class="cart-delivery__image">
                       <div class="cart-delivery__amount-box">
                         <span class="cart-delivery__product-amount">1</span>
                       </div>
                     </li>
                   </template>
-
-                  <!-- delivery second date row -->
-                  <!-- <div class="cart-delivery__row">
-                    <span class="cart-delivery__title">7—8 февраля</span>
-                    <div class="cart-delivery__value">
-                      <ul class="cart-delivery__images">
-                      </ul>
-                    </div>
-                  </div> -->
 
                 </div>
 
@@ -303,11 +290,16 @@
             <div class="cart-form__card-wrapper cart-payment">
               <div class="cart-form__card-header-box">
                 <h3 class="cart-form__card-header">Способ оплаты</h3>
-                <button class="cart-form__card-btn" type="button">Изменить</button>
+                <button class="cart-form__card-btn cart-form__payment-btn edit-card" type="button">Изменить</button>
               </div>
               <div class="cart-payment__card">
-                <span class="cart-payment__card-icon"></span>
-                <span class="cart-payment__card-details">1234 56•• •••• 1234<span class="cart-payment__card-date">01/30</span></span>
+                <div class="cart-payment__icon-box">
+                  <img class="cart-payment__card-icon" src="" alt="">
+                </div>
+                <div class="cart-payment__card-details">
+                  <span class="cart-payment__card-number"></span>
+                  <span class="cart-payment__card-date"></span>
+                </div>
               </div>
               <span class="cart-payment__add-info">Спишем оплату с карты при получении</span>
             </div>
@@ -421,13 +413,15 @@
                   <!-- heading -->
                   <div class="order__element-heading">
                     <span class="order__heading">Оплата картой</span>
-                    <span class="order__edit"></span>
+                    <span class="order__edit edit-card"></span>
                   </div>
 
                   <!-- card data -->
                   <div class="order__payment-card">
-                    <span class="order__card-icon"></span>
-                    <span class="order__card-number">1234 12•• •••• 1234</span>
+                    <div class="order__icon-box">
+                      <img class="order__icon-card" src="" alt="">
+                    </div>
+                    <span class="order__card-number"></span>
                   </div>
 
                   <!-- payment type -->
@@ -503,6 +497,51 @@
 
               </div>
               <div class="form-delivery__adress-box form-delivery__adress-box-pickup"></div>
+            </div>
+
+            <!-- submit btn container -->
+            <div class="popup__sbt-btn-wrapper">
+              <button class="popup__sbt-btn" type="submit">Выбрать</button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+      <!-- payment popup -->
+      <div class="popup popup-payment">
+        <div class="popup__container">
+
+          <!-- delivery-form header -->
+          <div class="popup__header">
+            <h2 class="popup__heading">Способ оплаты</h2>
+            <button class="popup__close-btn" type="button"></button>
+          </div>
+
+          <!-- delivery form -->
+          <form class="popup__form form-payment" novalidate>
+
+            <div class="popup__form-container">
+
+              <!-- adress box -->
+              <ul class="form-payment__list">
+                <template id="bank-card-template">
+                  <li class="form-payment__card-wrapper">
+                    <label class="form-payment__radio-btn radio-btn" title="Выбрать карту">
+                      <div class="radio-btn__value form-payment__card-data">
+                        <div class="form-payment__icon-box">
+                          <img class="form-payment__card-icon" src="" alt="">
+                        </div>
+                        <span class="form-payment__card-number"></span>
+                      </div>
+                      <input type="radio" class="radio-btn__input">
+                      <span class="radio-btn__checkmark form-payment__checkmark"></span>
+                    </label>
+                  </li>
+                </template>
+              </ul>
+
             </div>
 
             <!-- submit btn container -->

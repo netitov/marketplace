@@ -4,10 +4,13 @@ import ProductList from '../components/ProductList.js'
 import DeliveryPopup from '../components/DeliveryPopup';
 import AddressList from '../components/AddressList';
 import DeliveryDates from '../components/DeliveryDates';
-import { products, missingProducts, addressesData, pickupAddressesData, deliveryDates } from '../utils/data';
-import { productsContainer, missingProductsContainer, deliveryChangeBtn,
-  deliveryPopupSelector, courierAddressBox, pickupAddressBox, thumbnailBox, deliveryContainer } from '../utils/utils';
-
+import PaymentPopup from '../components/PaymentPopup';
+import { products, missingProducts, addressesData, pickupAddressesData, deliveryDates, bankCards } from '../utils/data';
+import {
+  productsContainer, missingProductsContainer, deliveryChangeBtn,
+  deliveryPopupSelector, courierAddressBox, pickupAddressBox, thumbnailBox, deliveryContainer, paymentChangeBtns,
+  paymentPopupSelector, cardsContainerSelector
+} from '../utils/utils';
 
 //products in cart
 const productArray = [];
@@ -15,6 +18,8 @@ const missingProductArray = missingProducts;
 
 //delivery dates and thumbnails
 const deliveryDatesList = new DeliveryDates(deliveryDates, deliveryContainer, '#delivery-date-template');
+
+const paymentPopup = new PaymentPopup(paymentPopupSelector, '#bank-card-template', bankCards, cardsContainerSelector);
 
 const deliveryPopup = new DeliveryPopup(deliveryPopupSelector, '#adressTemplate',
 toggleAddresses, addressesData[0], pickupAddressesData[0]);
@@ -106,12 +111,21 @@ productsList.renderItems();
 couirerAddresses.renderItems();
 pickupAddresses.renderItems();
 deliveryDatesList.renderItems();
+paymentPopup.renderItems();
 
 //open delivery popup
 deliveryChangeBtn.addEventListener('click', () => {
   deliveryPopup.openPopup();
 });
 
+//open payment popup
+paymentChangeBtns.forEach((i) => {
+  i.addEventListener('click', () => {
+    paymentPopup.openPopup();
+  });
+})
+
 productsList.setEventListeners();
 missingProductsList.setEventListeners();
 deliveryPopup.setEventListeners();
+paymentPopup.setEventListeners();
