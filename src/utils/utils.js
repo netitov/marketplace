@@ -16,6 +16,7 @@ export const targetElement = document.querySelector('.cart-delivery');
 export const payNowCheckbox = document.querySelector('.order__checkbox-input');
 export const payNowText = document.querySelectorAll('.order__paynow-text');
 export const formSubmitBtn = document.querySelector('.order__sbt-btn');
+//export const orderSum = document.querySelector('.order__sum-main-value');
 
 export const formatNumber = (number) => {
   const strNumber = number.toString();

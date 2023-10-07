@@ -16,6 +16,10 @@ export default class ProductList {
     this._orderAmount = document.querySelector('.order__amount');
     this._orderTotalPrice = document.querySelector('.order__sum-no-disc');
     this._orderDiscount = document.querySelector('.order__sum-discount');
+    this._payNowCheckbox = document.querySelector('.order__checkbox-input');
+    this._payNowText = document.querySelectorAll('.order__paynow-text');
+    this._formSubmitBtn = document.querySelector('.order__sbt-btn');
+    this._handlePayNowCheckbox = this._handlePayNowCheckbox.bind(this);
   }
 
   renderItems() {
@@ -52,6 +56,30 @@ export default class ProductList {
       this._orderAmount.textContent = goodsAmountString;
       this._orderTotalPrice.textContent = formatNumber(this._fullPrice) + ' сом';
       this._orderDiscount.textContent = formatNumber(this._fullPrice - this._totalSum) + ' сом';
+      if (this._payNowCheckbox.checked) this._formSubmitBtn.textContent = `Оплатить ${fullSumFormatted} сом`;
+
+      if (this._totalAmount === 0) {
+        this._formSubmitBtn.classList.add('order__sbt-btn_inactive');
+        this._formSubmitBtn.disabled = true;
+        this._payNowCheckbox.disabled = true;
+        this._formSubmitBtn.textContent = 'Заказать';
+      }
+    }
+  }
+
+  _handlePayNowCheckbox(e) {
+    const textArray = Array.from(this._payNowText);
+
+    if (e.target.checked) {
+      textArray.forEach((i) => {
+        i.classList.add('order__paynow-text_inactive');
+      });
+      this._formSubmitBtn.textContent = `Оплатить ${formatNumber(this._orderSum.textContent)} сом`;
+    } else {
+      textArray.forEach((i) => {
+        i.classList.remove('order__paynow-text_inactive');
+      })
+      this._formSubmitBtn.textContent = 'Заказать';
     }
   }
 
@@ -90,7 +118,11 @@ export default class ProductList {
     this._accordionIcon.addEventListener('click', () => {
       this._handleAccordion();
     });
-  }
 
+    if (!this._accordionAmountMissing) {
+      this._payNowCheckbox.addEventListener('click', this._handlePayNowCheckbox);
+    }
+
+  }
 
 }

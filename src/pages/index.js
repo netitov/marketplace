@@ -16,7 +16,7 @@ import {
 //products in cart
 const productArray = [];
 const missingProductArray = missingProducts;
-let orderSum;
+// /let orderSum;
 
 //delivery dates and thumbnails
 const deliveryDatesList = new DeliveryDates(deliveryDates, deliveryContainer, '#delivery-date-template');
@@ -79,8 +79,11 @@ function updateProductData(obj) {
   } else {
     productArray.push(obj);
   }
-  orderSum = productArray.reduce((sum, product) => sum + product.price, 0);
+  //orderSum = productArray.reduce((sum, product) => sum + product.price, 0);
   productsList.updateAccordionData(productArray);
+
+  //return orderSum;
+
 }
 
 //remove product from list
@@ -119,8 +122,8 @@ paymentPopup.renderItems();
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  //handle pay now checkbox: remove info text and update submit btn text
-  function handlePayNowCheckbox(e) {
+  //handle pay now checkbox: remove info text and update submit btn
+  /* function handlePayNowCheckbox(e) {
     if (e.target.checked) {
       payNowText.forEach((i) => {
         i.classList.add('order__paynow-text_inactive');
@@ -133,14 +136,14 @@ document.addEventListener('DOMContentLoaded', () => {
       })
     }
   }
-
+ */
   //scroll to element on click
   function scrollToTarget(targetElement) {
     targetElement.scrollIntoView({ behavior: 'smooth' });
   };
 
   scrollButton.addEventListener('click', () => scrollToTarget(targetElement));
-  payNowCheckbox.addEventListener('click', handlePayNowCheckbox);
+  //payNowCheckbox.addEventListener('click', handlePayNowCheckbox);
 });
 
 

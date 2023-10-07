@@ -181,6 +181,7 @@ export class FormValidator {
        this._setInputListeners();
       } else {
         console.log('Data saved')
+        alert('The order has been sent')
       }
     });
 
