@@ -121,31 +121,13 @@ paymentPopup.renderItems();
 
 
 document.addEventListener('DOMContentLoaded', () => {
-
-  //handle pay now checkbox: remove info text and update submit btn
-  /* function handlePayNowCheckbox(e) {
-    if (e.target.checked) {
-      payNowText.forEach((i) => {
-        i.classList.add('order__paynow-text_inactive');
-        formSubmitBtn.textContent = `Оплатить ${formatNumber(orderSum)} сом`;
-      })
-    } else {
-      payNowText.forEach((i) => {
-        i.classList.remove('order__paynow-text_inactive');
-        formSubmitBtn.textContent = 'Заказать';
-      })
-    }
-  }
- */
   //scroll to element on click
   function scrollToTarget(targetElement) {
     targetElement.scrollIntoView({ behavior: 'smooth' });
   };
 
   scrollButton.addEventListener('click', () => scrollToTarget(targetElement));
-  //payNowCheckbox.addEventListener('click', handlePayNowCheckbox);
 });
-
 
 
 //open delivery popup

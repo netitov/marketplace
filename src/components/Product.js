@@ -34,8 +34,8 @@ export default class Product {
     this._cardCompanyData = this._cardElement.querySelector('.product-card__company-tooltip-text');
     this._cardAmount = this._cardElement.querySelector('.counter__input');
     this._cardRemainder = this._cardElement.querySelector('.product-card__remainder');
-    this._cardSum = this._cardElement.querySelector('.product-card__sum');
-    this._cardFullSum = this._cardElement.querySelector('.product-card__sum-value');
+    this._cardSum = this._cardElement.querySelector('.product-card__sum-value');
+    this._cardFullSum = this._cardElement.querySelector('.product-card__tlt-sum-value');
     this._cardSumDisc = this._cardElement.querySelector('.product-card__disc');
     this._cardSumDiscValue = this._cardElement.querySelector('.product-card__disc-value');
     this._cardSumConsDisc = this._cardElement.querySelector('.product-card__cost-disc');
@@ -151,9 +151,15 @@ export default class Product {
     const roundedCostDiscountValue = Math.round(this._card.price * currentValue * this._card.disc * this._card.costDisc);
 
     //product cost
-    this._cardSum.textContent = formatNumber(roundedDiscountedPriceAmount) + ' сом';
+    this._cardSum.textContent = formatNumber(roundedDiscountedPriceAmount);
     this._cardFullSum.textContent = formatNumber(roundedPriceAmount) + ' сом';
-    this._cardSum.title = this._cardSum.textContent;
+    this._cardSum.title = this._cardSum.textContent + ' сом';
+
+    if (roundedDiscountedPriceAmount > 9999) {
+      this._cardSum.classList.add('product-card__sum-value_small');
+    } else {
+      this._cardSum.classList.remove('product-card__sum-value_small');
+    }
 
     //discount data
     this._cardSumDiscValue.textContent = `−${formatNumber(roundedDiscountValue)} сом`;

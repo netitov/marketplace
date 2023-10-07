@@ -19,6 +19,7 @@ export default class ProductList {
     this._payNowCheckbox = document.querySelector('.order__checkbox-input');
     this._payNowText = document.querySelectorAll('.order__paynow-text');
     this._formSubmitBtn = document.querySelector('.order__sbt-btn');
+    this._cartProductsAmount = document.querySelector('.navbar__number');
     this._handlePayNowCheckbox = this._handlePayNowCheckbox.bind(this);
   }
 
@@ -64,6 +65,14 @@ export default class ProductList {
         this._payNowCheckbox.disabled = true;
         this._formSubmitBtn.textContent = 'Заказать';
       }
+
+      if (data.length === 0) {
+        this._cartProductsAmount.parentElement.classList.add('navbar__number-box_inactive');
+      } else {
+        this._cartProductsAmount.parentElement.classList.remove('navbar__number-box_inactive');
+        this._cartProductsAmount.textContent = data.length;
+      }
+
     }
   }
 

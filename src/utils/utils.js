@@ -20,8 +20,7 @@ export const formSubmitBtn = document.querySelector('.order__sbt-btn');
 
 export const formatNumber = (number) => {
   const strNumber = number.toString();
-  const parts = strNumber.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-
+  const parts = strNumber.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   return parts;
 }
 
