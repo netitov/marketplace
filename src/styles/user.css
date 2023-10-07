@@ -1,3 +1,7 @@
+.user {
+  margin-bottom: 0;
+}
+
 .user__data {
   gap: 35px 24px;
   display: flex;

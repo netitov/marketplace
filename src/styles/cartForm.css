@@ -2,7 +2,7 @@
   padding: var(--page-padding);
   max-width: var(--max-width);
   margin: auto;
-  padding-bottom: 40px;
+  padding-bottom: 26px;
   display: flex;
   justify-content: center;
 }
