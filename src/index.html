@@ -219,7 +219,7 @@
 
               <div class="cart-form__card-header-box">
                 <h3 class="cart-form__card-header">Способ доставки</h3>
-                <button class="cart-form__card-btn" type="button">Изменить</button>
+                <button class="cart-form__card-btn edit-address" type="button">Изменить</button>
               </div>
 
               <div class="cart-delivery__data">
@@ -301,7 +301,7 @@
                   <span class="cart-payment__card-date"></span>
                 </div>
               </div>
-              <span class="cart-payment__add-info">Спишем оплату с карты при получении</span>
+              <span class="cart-payment__add-info order__paynow-text">Спишем оплату с карты при получении</span>
             </div>
 
             <!-- user data -->
@@ -361,20 +361,21 @@
 
                   <!-- final summ -->
                   <div class="order__sum-container">
-                    <span class="order__sum order__sum_main">Итого</span>
-                    <span class="order__sum order__sum_main">2 101 063&nbsp;<span class="order__curr">сом</span></span>
+                    <span class="order__sum order__sum-main">Итого</span>
+                    <span class="order__sum order__sum-main">
+                      <span class="order__sum-main-value">2 101 063</span><span class="order__curr">&nbsp;сом</span></span>
                   </div>
 
                   <!-- full sum -->
                   <div class="order__sum-container">
-                    <span class="order__sum">203 товара</span>
-                    <span class="order__sum">2 302 048&nbsp;сом</span>
+                    <span class="order__sum order__amount">203 товара</span>
+                    <span class="order__sum order__sum-no-disc">2 302 048&nbsp;сом</span>
                   </div>
 
                   <!-- discount -->
                   <div class="order__sum-container">
                     <span class="order__sum">Скидка</span>
-                    <span class="order__sum">-200 985&nbsp;сом</span>
+                    <span class="order__sum order__sum-discount">-200 985&nbsp;сом</span>
                   </div>
 
                   <!-- delivery -->
@@ -389,10 +390,10 @@
                 <div class="order__element order__delivery">
                   <div class="order__element-heading">
                     <span class="order__heading">Доставка в пункт выдачи</span>
-                    <span class="order__edit"></span>
+                    <span class="order__edit edit-address"></span>
                   </div>
-                  <p class="order__paragr">Бишкек, улица Ахматбека Суюмбаева, 12/1</p>
-                  <button type="button" class="order__delivery-date">5-8 фев</button>
+                  <p class="order__paragr order__selected-address">Бишкек, улица Ахматбека Суюмбаева, 12/1</p>
+                  <button type="button" class="order__delivery-date">5–8 фев</button>
                   <div class="order__add-info">
                     <span class="order__delivery-check"></span>
                     <div class="order__paragr">
@@ -428,10 +429,10 @@
                   <!-- payment type -->
                   <div class="order__add-info order__add-info_column">
                     <label class="order__checkbox checkbox">Списать оплату сразу
-                      <input type="checkbox" class="checkbox__input">
+                      <input type="checkbox" class="checkbox__input order__checkbox-input">
                       <span class="checkbox__checkmark order__checkmark"></span>
                     </label>
-                    <p class="order__paragr">Спишем оплату с карты при получении</p>
+                    <p class="order__paragr order__paynow-text">Спишем оплату с карты при получении</p>
                   </div>
                 </div>
 

@@ -12,6 +12,10 @@ export default class ProductList {
     this._accordionAmount = this._listSelector.querySelector('.products__accordion-amount');
     this._accordionAmountMissing = this._listSelector.querySelector('.products__accordion-amount-missing');
     this._accordionSum = this._listSelector.querySelector('.products__accordion-sum');
+    this._orderSum = document.querySelector('.order__sum-main-value');
+    this._orderAmount = document.querySelector('.order__amount');
+    this._orderTotalPrice = document.querySelector('.order__sum-no-disc');
+    this._orderDiscount = document.querySelector('.order__sum-discount');
   }
 
   renderItems() {
@@ -33,12 +37,21 @@ export default class ProductList {
   updateAccordionData(data) {
     this._totalAmount = data.reduce((sum, product) => sum + product.amount, 0);
     this._totalSum = data.reduce((sum, product) => sum + product.price, 0);
+    this._fullPrice = data.reduce((sum, product) => sum + product.fullPrice, 0);
+
+    const goodsAmountString = `${formatNumber(this._totalAmount)} ${declenWords(this._totalAmount, productWords)}`;
 
     if (this._accordionAmountMissing) {
       this._getMissingProductsData(data);
     } else {
-      this._accordionAmount.textContent = `${formatNumber(this._totalAmount)} ${declenWords(this._totalAmount, productWords)} ·`;
-      this._accordionSum.textContent = formatNumber(this._totalSum) + ' сом';
+      this._accordionAmount.textContent = `${goodsAmountString} ·`;
+      const fullSumFormatted = formatNumber(this._totalSum);
+      this._accordionSum.textContent = fullSumFormatted + ' сом';
+      this._orderSum.textContent = fullSumFormatted;
+      this._orderSum.title = fullSumFormatted + ' сом';
+      this._orderAmount.textContent = goodsAmountString;
+      this._orderTotalPrice.textContent = formatNumber(this._fullPrice) + ' сом';
+      this._orderDiscount.textContent = formatNumber(this._fullPrice - this._totalSum) + ' сом';
     }
   }
 

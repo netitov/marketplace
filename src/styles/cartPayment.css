@@ -5,7 +5,7 @@
 .cart-payment__card {
   display: flex;
   align-items: center;
-  margin: 16px 0 8px 0;
+  margin: 16px 0 0 0;
 }
 
 /* .cart-payment__card-icon {

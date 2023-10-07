@@ -8,10 +8,13 @@ export default class PaymentPopup extends Popup {
     this._container = container;
     this._selectedCard = renderedItems.find(i => i.checked);
     this._formElement = this._popupSelector.querySelector('.form-payment');
+    this._initialCard = renderedItems.find(i => i.checked);
+    this._submittedCard;
   }
 
   openPopup() {
     super.openPopup();
+    this._droppData()
   }
 
   _closePopup() {
@@ -32,7 +35,6 @@ export default class PaymentPopup extends Popup {
 
     this._icon = this._card.querySelector('.form-payment__card-icon');
     this._number = this._card.querySelector('.form-payment__card-number');
-    this._number = this._card.querySelector('.form-payment__card-number');
     this._input = this._card.querySelector('.radio-btn__input');
 
     this._icon.src = card.logo;
@@ -47,6 +49,19 @@ export default class PaymentPopup extends Popup {
     this._updateCardData();
 
     return this._card;
+  }
+
+  //drop selected data if form was closed without submit
+  _droppData() {
+    const allCards = this._popupSelector.querySelectorAll('.form-payment__card-number');
+
+    if (this._submittedCard) {
+      const savedCardElement = Array.from(allCards).find(i => i.textContent === this._submittedCard.number);
+      savedCardElement.closest('.form-payment__radio-btn').control.checked = true;
+    } else {
+      const savedCardElement = Array.from(allCards).find(i => i.textContent === this._initialCard.number);
+      savedCardElement.closest('.form-payment__radio-btn').control.checked = true;
+    }
   }
 
   renderItems() {
@@ -88,7 +103,9 @@ export default class PaymentPopup extends Popup {
   _submitForm(e) {
     e.preventDefault();
     this._updateCardData();
+    this._submittedCard = this._selectedCard;
     this._closePopup();
+
   }
 
   _setInnerEventListeners(card) {

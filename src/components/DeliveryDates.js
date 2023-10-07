@@ -3,6 +3,7 @@ export default class DeliveryDates {
     this._renderedItems = items;
     this._container = container;
     this._elementTemplate = elementTemplate;
+    this._orderDates = document.querySelector('.order__delivery-date');
   }
 
   _getTemplate(template) {
@@ -84,6 +85,7 @@ export default class DeliveryDates {
     //if new value more than in stock, get back additional delivery date (7—8 февраля)
     if (newValue > card.inOneStock && lastRow.classList.contains('cart-delivery__row_inactive')) {
       lastRow.classList.remove('cart-delivery__row_inactive');
+      this._getSummaryDatesDelivery();
       mainProduct.textContent = card.inOneStock;
       lastProduct.textContent = newValue - card.inOneStock;
       this._updateNumberStyle(card.inOneStock, mainProduct);
@@ -119,23 +121,60 @@ export default class DeliveryDates {
             element.textContent = elementAmount - leftDelta;
             leftDelta = leftDelta - elementAmount;
             reversedElements[i].closest('.cart-delivery__row').classList.add('cart-delivery__row_inactive');
+            this._getSummaryDatesDelivery();
           }
         }
       }
     }
   }
 
+  //get delivery dates for order summary
+  _getSummaryDatesDelivery() {
+
+    let str = '';
+    const dates = Array.from(document.querySelectorAll('.cart-delivery__row:not(.cart-delivery__row_inactive) .cart-delivery__date'));
+
+    if (dates.length === 0) {
+      this._orderDates.classList.add('order__delivery-date_inactive');
+      return;
+    } else {
+      this._orderDates.classList.remove('order__delivery-date_inactive');
+
+      if (dates.length === 1) {
+        str = dates[0].textContent;
+      } else {
+        const firstDate = dates[0].textContent;
+        const lastDate = dates[dates.length - 1].textContent;
+        const startDate = firstDate.split('—')[0];
+        const endDate = lastDate.split('—')[1];
+
+        str = `${startDate}—${endDate}`
+      }
+    }
+
+    const parts = str.split('—');
+
+    const beforeDash = parts[0].trim();
+    const afterDash = parts[1].trim();
+
+    const [dayAfterDash, monthAfterDash] = afterDash.split(' ');
+    const formattedDate = `${beforeDash}–${dayAfterDash} ${monthAfterDash.substring(0, 3)}`;
+    this._orderDates.textContent = formattedDate;
+  }
+
   removeThumbnail(cardId) {
     const elementsToRemove = document.querySelectorAll(`[data-product-id="${cardId}"]`);
 
     Array.from(elementsToRemove).forEach((i) => {
-      //remove data row if no products left
       if (!i.nextElementSibling && !i.previousElementSibling) {
+        //remove data row if no products left
         i.closest('.cart-delivery__row').remove();
       } else {
+        //remove thumbnail
         i.remove();
       }
     })
+    this._getSummaryDatesDelivery()
   }
 
 }

@@ -8,14 +8,15 @@ import PaymentPopup from '../components/PaymentPopup';
 import { FormValidator } from '../components/FormValidator';
 import { products, missingProducts, addressesData, pickupAddressesData, deliveryDates, bankCards } from '../utils/data';
 import {
-  productsContainer, missingProductsContainer, deliveryChangeBtn,
-  deliveryPopupSelector, courierAddressBox, pickupAddressBox, deliveryContainer, paymentChangeBtns,
-  paymentPopupSelector, cardsContainerSelector, cartFormElement, cartFormElements, inputErrros
+  productsContainer, missingProductsContainer, deliveryPopupSelector, courierAddressBox, pickupAddressBox,
+  deliveryContainer, paymentChangeBtns, paymentPopupSelector, cardsContainerSelector, cartFormElement,
+  cartFormElements, inputErrros, addressChangeBtn, scrollButton, targetElement, payNowCheckbox, payNowText, formSubmitBtn, formatNumber
 } from '../utils/utils';
 
 //products in cart
 const productArray = [];
 const missingProductArray = missingProducts;
+let orderSum;
 
 //delivery dates and thumbnails
 const deliveryDatesList = new DeliveryDates(deliveryDates, deliveryContainer, '#delivery-date-template');
@@ -78,6 +79,7 @@ function updateProductData(obj) {
   } else {
     productArray.push(obj);
   }
+  orderSum = productArray.reduce((sum, product) => sum + product.price, 0);
   productsList.updateAccordionData(productArray);
 }
 
@@ -114,10 +116,41 @@ pickupAddresses.renderItems();
 deliveryDatesList.renderItems();
 paymentPopup.renderItems();
 
-//open delivery popup
-deliveryChangeBtn.addEventListener('click', () => {
-  deliveryPopup.openPopup();
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  //handle pay now checkbox: remove info text and update submit btn text
+  function handlePayNowCheckbox(e) {
+    if (e.target.checked) {
+      payNowText.forEach((i) => {
+        i.classList.add('order__paynow-text_inactive');
+        formSubmitBtn.textContent = `Оплатить ${formatNumber(orderSum)} сом`;
+      })
+    } else {
+      payNowText.forEach((i) => {
+        i.classList.remove('order__paynow-text_inactive');
+        formSubmitBtn.textContent = 'Заказать';
+      })
+    }
+  }
+
+  //scroll to element on click
+  function scrollToTarget(targetElement) {
+    targetElement.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  scrollButton.addEventListener('click', () => scrollToTarget(targetElement));
+  payNowCheckbox.addEventListener('click', handlePayNowCheckbox);
 });
+
+
+
+//open delivery popup
+addressChangeBtn.forEach((i) => {
+  i.addEventListener('click', () => {
+    deliveryPopup.openPopup();
+  });
+})
 
 //open payment popup
 paymentChangeBtns.forEach((i) => {

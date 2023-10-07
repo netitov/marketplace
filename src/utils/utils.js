@@ -10,6 +10,12 @@ export const paymentChangeBtns = document.querySelectorAll('.edit-card');
 export const paymentPopupSelector = document.querySelector('.popup-payment');
 export const cardsContainerSelector = document.querySelector('.form-payment__list');
 export const cartFormElement = document.querySelector('.cart-form');
+export const addressChangeBtn = document.querySelectorAll('.edit-address');
+export const scrollButton = document.querySelector('.order__delivery-date');
+export const targetElement = document.querySelector('.cart-delivery');
+export const payNowCheckbox = document.querySelector('.order__checkbox-input');
+export const payNowText = document.querySelectorAll('.order__paynow-text');
+export const formSubmitBtn = document.querySelector('.order__sbt-btn');
 
 export const formatNumber = (number) => {
   const strNumber = number.toString();

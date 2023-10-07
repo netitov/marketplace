@@ -18,9 +18,13 @@
 .order__sum {
   font-size: 16px;
   line-height: 24px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.order__sum_main {
+.order__sum-main {
   font-size: 24px;
   font-weight: 700;
   line-height: 32px;
@@ -55,9 +59,13 @@
   cursor: pointer;
 }
 
-.order__delivery-edit:hover {
+.order__edit:hover {
   opacity: 0.6;
 }
+
+/* .order__delivery-edit:hover {
+  opacity: 0.6;
+} */
 
 .order__paragr {
   font-size: 13px;
@@ -76,6 +84,10 @@
   transition: opacity 0.3s;
   cursor: pointer;
   margin: 4px 0 12px 0;
+}
+
+.order__delivery-date_inactive {
+  opacity: 0;
 }
 
 .order__delivery-date:hover {
@@ -169,7 +181,6 @@
   padding: 0 0 0 30px;
   font-size: 13px;
   line-height: 22px;
-  margin-bottom: 8px;
 }
 
 .order__sbt-btn {
@@ -219,4 +230,13 @@
 
 .order__oferta-link:hover {
   color: var(--pink)
+}
+
+.order__paynow-text {
+  margin-top: 8px;
+  display: block;
+}
+
+.order__paynow-text_inactive {
+  display: none;
 }

@@ -13,16 +13,44 @@ export default class DeliveryPopup extends Popup {
     this._initialSbtBtn = this._popupSbtBtn.textContent;
     this._toggleDeliveryType = this._toggleDeliveryType.bind(this);
     this.toggleAddresses = toggleAddresses;
+    this._initialAddress = { courier: defaultAddress.address, pickUp: defaultPickupAddress.address, activeType: 'pickUp', rating: 0 };
     this._selectedAddress = { courier: defaultAddress.address, pickUp: defaultPickupAddress.address, activeType: 'pickUp', rating: 0 };
+    this._submittedAddress;
   }
 
   openPopup() {
     super.openPopup();
     this._updateAddressBoxWidth([this._courierAddressBox, this._pickupAddressBox]);
+    this._dropData();
   }
 
   _closePopup() {
     super.closePopup();
+  }
+
+  //drop selected data if form was closed without submit
+  _dropData() {
+    const allInputs = this._popupSelector.querySelectorAll('.radio-btn__value');
+
+    if (!this._submittedAddress) {
+      const initialInputCourier = Array.from(allInputs).find(i => i.textContent === this._initialAddress.courier);
+      const initialInputpickup = Array.from(allInputs).find(i => i.textContent === this._initialAddress.pickUp);
+      if (initialInputCourier) initialInputCourier.nextElementSibling.checked = true;
+      if (initialInputpickup) initialInputpickup.nextElementSibling.checked = true;
+
+      const activeBtn = this._initialAddress.activeType === 'pickUp' ? this._deliveryBtnPickup : this._deliveryBtnCourier;
+      this._toggleDeliveryType(activeBtn);
+    } else {
+      const submittedAddress = Array.from(allInputs).find(i => i.textContent === this._submittedAddress[this._submittedAddress.activeType]);
+      const inActiveType = this._submittedAddress.activeType === 'pickUp' ? 'courier' : 'pickUp';
+
+      const initialInactiveInput = Array.from(allInputs).find(i => i.textContent === this._initialAddress[inActiveType]);
+      if (submittedAddress) submittedAddress.nextElementSibling.checked = true;
+      if (initialInactiveInput) initialInactiveInput.nextElementSibling.checked = true;
+
+      const activeBtn = this._submittedAddress.activeType === 'pickUp' ? this._deliveryBtnPickup : this._deliveryBtnCourier;
+      this._toggleDeliveryType(activeBtn);
+    }
   }
 
   _getTemplate() {
@@ -60,10 +88,10 @@ export default class DeliveryPopup extends Popup {
   }
 
   //handle buttons: toggle active address list (courier or pick up)
-  _toggleDeliveryType(e) {
-    //toggle active btn
-    if (!e.target.classList.contains('form-delivery__del-type_active')) {
-      if (this._deliveryBtnCourier.textContent === e.target.textContent) {
+  _toggleDeliveryType(data) {
+
+    if (!data.classList.contains('form-delivery__del-type_active')) {
+      if (this._deliveryBtnCourier.textContent === data.textContent) {
         this._deliveryBtnPickup.classList.remove('form-delivery__del-type_active');
         this._deliveryBtnCourier.classList.add('form-delivery__del-type_active');
 
@@ -147,14 +175,18 @@ export default class DeliveryPopup extends Popup {
   _submitForm(e) {
     e.preventDefault();
     this._newAddress = this._selectedAddress[this._selectedAddress.activeType];
+    this._submittedAddress = {
+      courier: this._selectedAddress.courier, pickUp: this._selectedAddress.pickUp, activeType: this._selectedAddress.activeType, rating: 0 };;
 
-    //check of address selected
+    //check if address selected
     if (this._newAddress !== '') {
       this._selectedAddressElement = document.querySelector('.cart-delivery__address');
       this._selectedAddressRating = document.querySelector('.cart-delivery__rating-value');
       this._pickupAddressData = document.querySelector('.cart-delivery__address-data');
+      this._orderAddress = document.querySelector('.order__selected-address');
 
       this._selectedAddressElement.textContent = this._newAddress;
+      this._orderAddress.textContent = this._newAddress;
 
       //add rating for pickup address
       if (this._selectedAddress.activeType === 'pickUp') {
@@ -167,9 +199,7 @@ export default class DeliveryPopup extends Popup {
       } else {
         this._pickupAddressData.classList.add('cart-delivery__address-data_inactive')
       }
-
       this._closePopup();
-
     }
 
   }
@@ -181,8 +211,8 @@ export default class DeliveryPopup extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
-    this._deliveryBtnCourier.addEventListener('click', this._toggleDeliveryType);
-    this._deliveryBtnPickup.addEventListener('click', this._toggleDeliveryType);
+    this._deliveryBtnCourier.addEventListener('click', e => this._toggleDeliveryType(e.target));
+    this._deliveryBtnPickup.addEventListener('click', e => this._toggleDeliveryType(e.target));
     this._formElement.addEventListener('submit', e => this._submitForm(e));
   }
 

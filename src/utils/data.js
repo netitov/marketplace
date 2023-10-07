@@ -168,19 +168,19 @@ export const addressesData = [
 
 export const pickupAddressesData = [
   {
-    address: 'г. Бишкек, микрорайон Джал, улица Ахунбаева Исы, д. 67/1',
+    address: 'Бишкек, улица Ахматбека Суюмбаева, 12/1',
     rating: 0,
     checked: true,
     type: 'pickUp'
   },
   {
-    address: 'г. Бишкек, микрорайон Джал, улица Ахунбаева Исы, д. 67/1',
+    address: 'Бишкек, микрорайон Джал, улица Ахунбаева Исы, д. 67/1 ',
     rating: 4.99,
     checked: false,
     type: 'pickUp'
   },
   {
-    address: 'г. Бишкек, улица Табышалиева, д. 57',
+    address: 'Бишкек, улица Табышалиева, д. 57 ',
     rating: 4.99,
     checked: false,
     type: 'pickUp'
@@ -196,21 +196,21 @@ export const bankCards = [
     checked: true
   },
   {
-    number: '1234 56•• •••• 1234',
+    number: '1234 56•• •••• 1235',
     logo: visa,
     name: 'Карта Visa',
     validity: '01/30',
     checked: false
   },
   {
-    number: '1234 56•• •••• 1234',
+    number: '1234 56•• •••• 1236',
     logo: master,
     name: 'Карта MasterCard',
     validity: '01/30',
     checked: false
   },
   {
-    number: '1234 56•• •••• 1234',
+    number: '1234 56•• •••• 1237',
     logo: maestro,
     name: 'Maestro',
     validity: '01/30',

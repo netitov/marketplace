@@ -159,7 +159,7 @@ export default class Product {
     this._cardSumDiscValue.textContent = `−${formatNumber(roundedDiscountValue)} сом`;
     this._cardSumCostDiscValue.textContent = `−${formatNumber(roundedCostDiscountValue)} сом`;
 
-    this._updateProductData({ product: this._card.title, price: roundedDiscountedPriceAmount, amount: currentValue });
+    this._updateProductData({ product: this._card.title, price: roundedDiscountedPriceAmount, amount: currentValue, fullPrice: roundedPriceAmount });
   }
 
   //update number of remaining products
