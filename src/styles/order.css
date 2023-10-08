@@ -245,3 +245,32 @@
 .order__paynow-text_inactive {
   display: none;
 }
+
+@media (max-width: 1020px) {
+  .order__add-info {
+    background-color: #F0ECF4;
+  }
+}
+
+@media (max-width: 580px) {
+  .order__sum-main, .order__curr {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .order__delivery-data {
+    display: none;
+  }
+
+  .order__element {
+    margin-bottom: 16px;
+  }
+
+  .order__card-data {
+    display: none;
+  }
+
+  .order__payment {
+    margin-bottom: 24px;
+  }
+}

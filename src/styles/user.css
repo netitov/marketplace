@@ -114,3 +114,14 @@
   font-size: 12px;
   line-height: 14px;
 }
+
+@media (max-width: 768px) {
+  .user__input-container {
+    width: 100%;
+  }
+
+  .user__data {
+    gap: 29px;
+    margin-top: 21px;
+  }
+}

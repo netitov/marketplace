@@ -1,7 +1,7 @@
 import { formatNumber } from '../utils/utils';
 
 export default class Product {
-  constructor(card, elementTemplate, { setLike }, missingCard, updateProductData, removeProduct, updateThumbnails) {
+  constructor(card, elementTemplate, { setLike }, missingCard, updateProductData, removeProduct, updateThumbnails, companyData, products) {
     this._elementTemplate = elementTemplate;
     //this._thumbnailTemplate = thumbnailTemplate;
     this._card = card;
@@ -11,6 +11,8 @@ export default class Product {
     this._removeProduct = removeProduct;
     this._updateThumbnails = updateThumbnails;
     this._prevValue;
+    this._comanyData = companyData;
+    this._products = products;
   }
 
   _getTemplate(template) {
@@ -31,7 +33,7 @@ export default class Product {
     this._propsContainer = this._cardElement.querySelector('.product-card__properties');
     this._cardStore = this._cardElement.querySelector('.product-card__store-value');
     this._cardCompany = this._cardElement.querySelector('.product-card__company-name');
-    this._cardCompanyData = this._cardElement.querySelector('.product-card__company-tooltip-text');
+    /* this._cardCompanyData = this._cardElement.querySelector('.product-card__company-tooltip-text'); */
     this._cardAmount = this._cardElement.querySelector('.counter__input');
     this._cardRemainder = this._cardElement.querySelector('.product-card__remainder');
     this._cardSum = this._cardElement.querySelector('.product-card__sum-value');
@@ -44,21 +46,38 @@ export default class Product {
     this._likeIcon = this._cardElement.querySelector('.product-card__actn-btn-like');
     this._plusBtn = this._cardElement.querySelector('.counter__btn_plus');
     this._minusBtn = this._cardElement.querySelector('.counter__btn_minus');
+    this._tltCompany = this._cardElement.querySelector('.product-card__company-tooltip-name');
+    this._tltOgrn = this._cardElement.querySelector('.product-card__company-tooltip-ogrn');
+    this._tltAddress = this._cardElement.querySelector('.product-card__company-tooltip-address');
+    this._tolltip = this._cardElement.querySelector('.product-card__company-tooltip');
+    this._productSize = this._cardElement.querySelector('.product-card__size');
 
     const card = this._card;
 
     this._cardImg.src = card.link;
-    this._cardTitle.textContent = !card.brand ? card.title : `${card.title}, `;
+    this._cardTitle.textContent = !card.brand ? card.title : `${card.title}, ${card.brand}`;
     this._cardTitle.alt = card.title;
-    this._cardBrand.textContent = card.brand ? card.brand : '';
+
+    this._setSizeData(card, this._productSize);
 
     //only for products in stock
     if (!this._missingCard) {
       this._cardStore.textContent = card.store;
       this._cardCompany.textContent = card.company;
-      this._cardCompanyData.textContent = card.companyData;
       this._cardAmount.value = card.amount.reduce((acc, current) => acc + current.amount, 0);
-      this._prevValue = card.amount.reduce((acc, current) => acc + current.amount, 0)
+      this._prevValue = card.amount.reduce((acc, current) => acc + current.amount, 0);
+
+      const companyInfo = this._comanyData.find(i => i.company === card.company);
+
+      this._tltCompany.textContent = companyInfo.companyTooltip;
+      this._tltOgrn.textContent = companyInfo.ogrn;
+      this._tltAddress.textContent = companyInfo.address;
+
+      if (this._products.findIndex(i => i.id === card.id) === 0) {
+        this._tolltip.classList.add('product-card__company-tooltip_top');
+      } else  {
+        this._tolltip.classList.remove('product-card__company-tooltip_top');
+      }
 
       this._updateSum();
       this._updateLeftovers();
@@ -81,6 +100,17 @@ export default class Product {
       propSpan.classList.add(className);
       container.appendChild(propSpan);
     });
+  }
+
+  //check if product has a size, add size data to the card img
+  _setSizeData(card, element) {
+    const size = card.props.find(i => i.includes('Размер'));
+
+    if (size) {
+      const sizeData = parseInt(size.replace(/\D/g, ''), 10);
+      element.textContent = sizeData;
+      element.classList.add('product-card__size_active');
+    }
   }
 
   //add or remove like

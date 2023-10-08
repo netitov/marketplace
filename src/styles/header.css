@@ -40,6 +40,7 @@
   width: 48px;
   height: 48px;
   margin-right: 16px;
+  cursor: pointer;
 }
 
 .header__burger-img{
@@ -60,4 +61,46 @@
   letter-spacing: 1.9px;
   text-decoration: none;
   width: 107px;
+}
+
+@media (max-width: 768px) {
+
+  .header {
+    padding: 0 0 25.4px 0;
+  }
+  .header__container {
+    padding: 0 13px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header__burger-img{
+    background-image: url('../images/burger-mobile.svg');
+    width: 28px;
+    height: 28px;
+  }
+
+  .header__burger {
+    border: none;
+    padding: 0;
+    margin-right: 16px;
+    width: auto;
+    height: auto;
+  }
+
+  .header__logo {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.52px;
+    white-space: nowrap;
+    height: 24px;
+    display: block;
+    width: auto;
+    padding: 13px 0 21px;
+  }
+
+  .header__navbar {
+    display: none;
+  }
 }

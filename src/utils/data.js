@@ -52,7 +52,7 @@ export const products = [
     link: photo3,
     id: 'element3',
     title: 'Карандаши цветные Faber-Castell "Замок", набор 24 цвета, заточенные, шестигранные',
-    brand: 'Faber-Castell',
+    brand: 'Faber\u2011Castell',
     props: [],
     store: 'Коледино WB',
     company: 'OOO Вайлдберриз',
@@ -218,4 +218,19 @@ export const bankCards = [
   },
 
 
+];
+
+export const companyData = [
+  {
+    company: 'OOO Мегапрофстиль',
+    companyTooltip: 'OOO «МЕГАПРОФСТИЛЬ»',
+    ogrn: 'ОГРН: 5167746237148',
+    address: '129337, Москва, улица Красная Сосна, 2, корпус 1, стр. 1, помещение 2, офис 34'
+  },
+  {
+    company: 'OOO Вайлдберриз',
+    companyTooltip: 'ООО «Вайлдберриз»',
+    ogrn: 'ОГРН: 1067746062449',
+    address: '142181, Московская область, г. Подольск, деревня Коледино, Территория Индустриальный парк Коледино, д. 6, стр. 1'
+  },
 ];

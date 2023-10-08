@@ -151,3 +151,21 @@
   line-height: 16px;
 }
 
+@media (max-width: 580px) {
+  .cart-delivery__row {
+    flex-direction: column;
+  }
+
+  .cart-delivery__value {
+    margin-left: 0;
+  }
+
+  .cart-delivery__data {
+    margin-top: 8px;
+  }
+
+  .cart-delivery__title {
+    margin-bottom: 12px;
+  }
+}
+

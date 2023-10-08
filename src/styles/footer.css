@@ -26,3 +26,9 @@
   margin: 0;
   max-width: var(--max-width);
 }
+
+@media (max-width: 768px) {
+  .footer {
+    margin-bottom: 56px;
+  }
+}

@@ -6,7 +6,7 @@ import AddressList from '../components/AddressList';
 import DeliveryDates from '../components/DeliveryDates';
 import PaymentPopup from '../components/PaymentPopup';
 import { FormValidator } from '../components/FormValidator';
-import { products, missingProducts, addressesData, pickupAddressesData, deliveryDates, bankCards } from '../utils/data';
+import { products, missingProducts, addressesData, pickupAddressesData, deliveryDates, bankCards, companyData } from '../utils/data';
 import {
   productsContainer, missingProductsContainer, deliveryPopupSelector, courierAddressBox, pickupAddressBox,
   deliveryContainer, paymentChangeBtns, paymentPopupSelector, cardsContainerSelector, cartFormElement,
@@ -26,12 +26,12 @@ const deliveryPopup = new DeliveryPopup(deliveryPopupSelector, '#adressTemplate'
 ;
 const formValidation = new FormValidator(cartFormElements, cartFormElement, inputErrros)
 
-//main products object
+//courier address object
 const couirerAddresses = new AddressList ({
   renderer: (item) => renderAddress(item, couirerAddresses)
 }, addressesData, courierAddressBox);
 
-//main products object
+//pickup address object
 const pickupAddresses = new AddressList ({
   renderer: (item) => renderAddress(item, pickupAddresses)
 }, pickupAddressesData, pickupAddressBox);
@@ -60,7 +60,7 @@ function addProduct(card, template, copy, missingProduct, appendBox) {
     setLike: (e, card) => {
       setLike(e, card)
     }
-  }, missingProduct, updateProductData, removeProduct, updateThumbnails);
+  }, missingProduct, updateProductData, removeProduct, updateThumbnails, companyData, products);
 
   const cardElement = cardClass.generateProduct();
   copy.addItem(cardElement, appendBox);

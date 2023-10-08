@@ -36,3 +36,29 @@
   transform: translateY(-50%);
   padding: 0;
 }
+
+@media (max-width: 768px) {
+
+  .searcher {
+    width: 28px;
+    overflow: hidden;
+    height: 28px;
+    flex-grow: 0;
+    margin: 0 0 0 16px;
+  }
+
+  .searcher__btn {
+    background-image: url('../images/search-white.svg');
+    background-position: 50%;
+    height: 28px;
+    left: 0;
+    width: 28px;
+    cursor: pointer;
+  }
+
+  .searcher__input {
+    background: transparent;
+    opacity: 0;
+    padding: 0;
+  }
+}

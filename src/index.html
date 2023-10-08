@@ -12,12 +12,12 @@
         <div class="header__container">
 
           <!-- burger and logo -->
-          <div class="header__logo-contaner">
+          <!-- <div class="header__logo-contaner"> -->
             <button type="button" class="header__burger">
               <span class="header__burger-img"></span>
             </button>
             <a href="/" class="header__logo">ТОВАРЫ И ТОЧКА</a>
-          </div>
+          <!-- </div> -->
 
           <!-- search input -->
           <div class="header__search searcher">
@@ -73,7 +73,9 @@
                     <span class="products__accordion-sum"></span>
                   </p>
 
-                  <button type="button" class="products__accordion-icon"></button>
+                  <button type="button" class="products__accordion-icon">
+                    <span></span>
+                  </button>
                 </div>
 
                   <ul class="products__list">
@@ -83,7 +85,7 @@
                       <li class="products__card product-card">
 
                         <!-- image and description -->
-                        <div class="product-card__good">
+                        <!-- <div class="product-card__good"> -->
 
                           <!-- product img -->
                           <div class="product-card__img-box">
@@ -93,6 +95,7 @@
                               <span class="checkbox__checkmark"></span>
                             </label>
                             <img src="" alt="" class="product-card__img">
+                            <span class="product-card__size"></span>
                           </div>
 
                           <!-- product description -->
@@ -109,13 +112,17 @@
                                 <div class="product-card__company-tooltip tooltip">
                                   <span class="product-card__company-tooltip-value"></span>
                                   <div class="tooltip__text-box">
-                                    <span class="tooltip__text product-card__company-tooltip-text"></span>
+                                    <div class="tooltip__text product-card__company-tooltip-text">
+                                      <span class="product-card__company-tooltip-name"></span>
+                                      <span class="product-card__company-tooltip-ogrn"></span>
+                                      <span class="product-card__company-tooltip-address"></span>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </div>
+                        <!-- </div> -->
 
                         <!-- counter and action btns -->
                         <div class="product-card__counter-wrapper">
@@ -172,7 +179,9 @@
                     <span class="products__accordion-amount products__accordion-amount-missing"></span>
                   </p>
                   <!-- <h3 class="products__title">Отсутствуют · 3 товара</h3> -->
-                  <button type="button" class="products__accordion-icon"></button>
+                  <button type="button" class="products__accordion-icon">
+                    <span></span>
+                  </button>
                 </div>
 
                 <ul class="products__list products__list_missing">
@@ -181,23 +190,26 @@
                     <li class="products__card product-card">
 
                       <!-- image and description -->
-                      <div class="product-card__good product-card__good_left">
+                      <!-- <div class="product-card__good product-card__good_left"> -->
 
                         <!-- product img -->
-                        <img
-                          src="<%=require('./images/photo1.png')%>"
-                          alt="Футболка UZcotton мужская"
-                          class="product-card__img product-card__img_grey"
+                        <div class="product-card__img-box product-card__img-box_missing">
+                          <img
+                            src="<%=require('./images/photo1.png')%>"
+                            alt="Футболка UZcotton мужская"
+                            class="product-card__img product-card__img_grey"
                           >
+                          <span class="product-card__size"></span>
+                        </div>
 
                         <!-- product description -->
                         <div class="product-card__info product-card__info_missing">
                           <a class="product-card__title" href="https://www.wildberries.ru/" target="_blank">
-                            <span class="product-card__name"></span><span class="product-card__brand"></span>
+                            <span class="product-card__name"></span>
                           </a>
                           <div class="product-card__properties"></div>
                         </div>
-                      </div>
+                      <!-- </div> -->
 
                       <!-- action btns -->
                       <div class="product-card__counter-wrapper">
@@ -391,12 +403,14 @@
 
                 <!-- delivery data -->
                 <div class="order__element order__delivery">
-                  <div class="order__element-heading">
-                    <span class="order__heading">Доставка в пункт выдачи</span>
-                    <span class="order__edit edit-address"></span>
+                  <div class="order__delivery-data">
+                    <div class="order__element-heading">
+                      <span class="order__heading">Доставка в пункт выдачи</span>
+                      <span class="order__edit edit-address"></span>
+                    </div>
+                    <p class="order__paragr order__selected-address">Бишкек, улица Ахматбека Суюмбаева, 12/1</p>
+                    <button type="button" class="order__delivery-date">5–8 фев</button>
                   </div>
-                  <p class="order__paragr order__selected-address">Бишкек, улица Ахматбека Суюмбаева, 12/1</p>
-                  <button type="button" class="order__delivery-date">5–8 фев</button>
                   <div class="order__add-info">
                     <span class="order__delivery-check"></span>
                     <div class="order__paragr">
@@ -415,18 +429,22 @@
                 <!-- payment data -->
                 <div class="order__element order__payment">
 
-                  <!-- heading -->
-                  <div class="order__element-heading">
-                    <span class="order__heading">Оплата картой</span>
-                    <span class="order__edit edit-card"></span>
-                  </div>
+                  <div class="order__card-data">
 
-                  <!-- card data -->
-                  <div class="order__payment-card">
-                    <div class="order__icon-box">
-                      <img class="order__icon-card" src="" alt="">
+                    <!-- heading -->
+                    <div class="order__element-heading">
+                      <span class="order__heading">Оплата картой</span>
+                      <span class="order__edit edit-card"></span>
                     </div>
-                    <span class="order__card-number"></span>
+
+                    <!-- card data -->
+                    <div class="order__payment-card">
+                      <div class="order__icon-box">
+                        <img class="order__icon-card" src="" alt="">
+                      </div>
+                      <span class="order__card-number"></span>
+                    </div>
+
                   </div>
 
                   <!-- payment type -->
@@ -562,6 +580,22 @@
       <footer class="footer">
         <p class="footer__text">&copy; 2022&nbsp;&nbsp;ООО «Товары и точка»</p>
       </footer>
+
+      <!-- mobile navigation -->
+      <nav class="mob-nav">
+        <ul class="mob-nav__ul">
+          <li class="mob-nav__li"><a class="mob-nav__link mob-nav__link-home" href="#"></a></li>
+          <li class="mob-nav__li"><a class="mob-nav__link mob-nav__link-search" href="#"></a></li>
+          <li class="mob-nav__li">
+            <a class="mob-nav__link mob-nav__link-cart" href="#"></a>
+            <div class="navbar__number-box">
+              <span class="navbar__number">3</span>
+            </div>
+          </li>
+          <li class="mob-nav__li"><a class="mob-nav__link mob-nav__link-favorites" href="#"></a></li>
+          <li class="mob-nav__li"><a class="mob-nav__link mob-nav__link-profile" href="#"></a></li>
+        </ul>
+      </nav>
 
     </div>
   </body>

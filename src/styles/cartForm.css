@@ -76,3 +76,77 @@
 .cart-form__card-btn:hover {
   opacity: 0.6;
 }
+
+@media (max-width: 1020px) {
+  .cart-form {
+    flex-direction: column;
+  }
+
+  .cart-form__content {
+    width: 100%;
+  }
+
+  .cart-form__sidebar {
+    width: 100%;
+  }
+
+  .cart-form__sidebar {
+    margin-top: 16px;
+  }
+
+  .cart-form__card-wrapper_main {
+    position: relative;
+    box-shadow: none;
+    background-color: transparent;
+    top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-form {
+    /* padding: var(--phone-page-padding); */
+    padding: 0;
+    margin-top: -9px;
+  }
+
+  .cart-form__card-wrapper {
+    padding: 16px 16px 24px 16px;
+    margin-bottom: 12px;
+  }
+
+  .cart-form__card-wrapper_main {
+    margin-bottom: 0;
+    padding-bottom: 16px;
+  }
+
+  .cart-form__heading {
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 6px;
+    z-index: 2;
+    position: relative;
+  }
+
+  .cart-form__content {
+    margin-right: 0;
+    padding-top: 0;
+  }
+
+  .cart-form__card-header {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .cart-form__card-btn {
+    padding: 3px 0 0;
+  }
+
+  .cart-form__container {
+    padding: var(--phone-page-padding);
+  }
+
+  .cart-form__card-wrapper {
+    padding-top: 8px;
+  }
+
+}

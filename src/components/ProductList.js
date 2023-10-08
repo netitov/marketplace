@@ -19,7 +19,7 @@ export default class ProductList {
     this._payNowCheckbox = document.querySelector('.order__checkbox-input');
     this._payNowText = document.querySelectorAll('.order__paynow-text');
     this._formSubmitBtn = document.querySelector('.order__sbt-btn');
-    this._cartProductsAmount = document.querySelector('.navbar__number');
+    this._cartProductsAmount = document.querySelectorAll('.navbar__number');
     this._handlePayNowCheckbox = this._handlePayNowCheckbox.bind(this);
   }
 
@@ -66,11 +66,16 @@ export default class ProductList {
         this._formSubmitBtn.textContent = 'Заказать';
       }
 
+      const cartsArray = Array.from(this._cartProductsAmount);
       if (data.length === 0) {
-        this._cartProductsAmount.parentElement.classList.add('navbar__number-box_inactive');
+        cartsArray.forEach((i) => {
+          i.parentElement.classList.add('navbar__number-box_inactive');
+        });
       } else {
-        this._cartProductsAmount.parentElement.classList.remove('navbar__number-box_inactive');
-        this._cartProductsAmount.textContent = data.length;
+        cartsArray.forEach((i) => {
+          i.parentElement.classList.remove('navbar__number-box_inactive');
+          i.textContent = data.length;
+        });
       }
 
     }
@@ -100,7 +105,7 @@ export default class ProductList {
   //set max height for poduct list for accordion transition
   _updateAccordionHeight() {
     this._productListHeight = this._productList.offsetHeight;
-    this._productList.style.maxHeight = this._productListHeight + 'px';
+    this._productList.style.maxHeight = this._productListHeight + 250 + 'px';
   }
 
   _getMissingProductsData(arr) {
