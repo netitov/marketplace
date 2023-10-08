@@ -128,8 +128,10 @@
 
 .order__delivery-tooltip > .tooltip__text-box {
   right: -10px;
+  left: auto;
   bottom: -48px;
   top: auto;
+  width: 100%;
 }
 
 .order__delivery-tooltip-text {

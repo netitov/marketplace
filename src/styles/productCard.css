@@ -263,7 +263,7 @@
   margin-top: 5px;
   text-decoration: line-through;
 
-  overflow: hidden;
+  /* overflow: hidden; */
   text-overflow: ellipsis;
   white-space: nowrap;
 }

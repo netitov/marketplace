@@ -33,8 +33,6 @@
   width: 400px;
 }
 
-
-
 .popup__header {
   display: flex;
   justify-content: space-between;
@@ -98,6 +96,12 @@
 
 .popup__close-btn:hover {
   opacity: 0.6;
+}
+
+@media (min-width: 768px) {
+  .popup {
+    overflow-y: scroll;
+  }
 }
 
 @media (max-width: 500px) {
