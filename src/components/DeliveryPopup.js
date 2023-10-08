@@ -162,11 +162,14 @@ export default class DeliveryPopup extends Popup {
   _updateAddressBoxWidth(array) {
     array.forEach((i) => {
       if (i.scrollHeight > i.clientHeight) {
-        i.style.marginRight = '-10px';
-        i.style.paddingRight = '5px';
+        /* i.style.marginRight = '-10px';
+        i.style.paddingRight = '5px'; */
+
+        i.classList.add('form-delivery__adress-box_wide');
       } else {
-        i.style.marginRight = '';
-        i.style.paddingRight = '';
+        /* i.style.marginRight = '';
+        i.style.paddingRight = ''; */
+        i.classList.remove('form-delivery__adress-box_wide');
       }
     })
   }

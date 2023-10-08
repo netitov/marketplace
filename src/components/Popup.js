@@ -4,14 +4,15 @@ export default class Popup {
     this.closePopup = this.closePopup.bind(this);
     this._handleOverlayClose = this._handleOverlayClose.bind(this);
     this._handleEscClose = this._handleEscClose.bind(this);
-    this._pageElement = document.querySelector('.main');
+    this._pageElement = document.querySelector('.page');
   }
 
    openPopup() {
     this._popupSelector.classList.add('popup_opened');
 
-    document.body.style.overflowY = 'hidden';
-    this._pageElement.style.paddingRight= '17px';
+    //remove scroll bar when popup is opened
+    document.body.classList.add('body_unscrolled');
+    this._pageElement.classList.add('page_scrolled');
 
     document.addEventListener('mousedown', this._handleOverlayClose);
     document.addEventListener('keydown', this._handleEscClose);
@@ -22,8 +23,8 @@ export default class Popup {
 
     //smooth page scroll appearance to avoid shifting
     setTimeout(() => {
-      document.body.style.overflowY = '';
-      this._pageElement.style.paddingRight= '';
+      document.body.classList.remove('body_unscrolled');
+      this._pageElement.classList.remove('page_scrolled');
     }, 200)
 
 

@@ -26,6 +26,7 @@
   border-radius: 16px;
   width: 100%;
   max-width: 500px;
+  position: relative;
 }
 
 .popup-payment > .popup__container {
@@ -97,4 +98,32 @@
 
 .popup__close-btn:hover {
   opacity: 0.6;
+}
+
+@media (max-width: 500px) {
+  .popup > .popup__container {
+    height: 100%;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .popup__header {
+    padding: 16px 11px 16px 13px;
+  }
+
+  .popup__form-container {
+    padding: 0 14px;
+  }
+
+  .popup__sbt-btn-wrapper {
+    position: absolute;
+    bottom: 0;
+    padding: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .popup__sbt-btn {
+    width: 100%;
+  }
 }

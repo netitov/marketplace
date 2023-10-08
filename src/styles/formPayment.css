@@ -37,3 +37,9 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
+@media (max-width: 500px) {
+  .form-payment__list {
+    padding: 0 2px;
+  }
+}
