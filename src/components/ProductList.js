@@ -1,7 +1,7 @@
 import { formatNumber, declenWords, productWords } from '../utils/utils';
 
 export default class ProductList {
-  constructor ({ items, renderer }, containerSelector, listSelector) {
+  constructor ({ items, renderer }, containerSelector, listSelector, toggleThumbnails) {
     this._renderedItems = items;
     this._renderer = renderer;
     this._container = containerSelector;
@@ -21,6 +21,9 @@ export default class ProductList {
     this._formSubmitBtn = document.querySelector('.order__sbt-btn');
     this._cartProductsAmount = document.querySelectorAll('.navbar__number');
     this._handlePayNowCheckbox = this._handlePayNowCheckbox.bind(this);
+    this._mainCheckbox = this._listSelector.querySelector('.product__checkbox-all');
+    this._productsData;
+    this._toggleThumbnails = toggleThumbnails;
   }
 
   renderItems() {
@@ -40,9 +43,17 @@ export default class ProductList {
 
   //update accordion data: all products amount and sum
   updateAccordionData(data) {
-    this._totalAmount = data.reduce((sum, product) => sum + product.amount, 0);
-    this._totalSum = data.reduce((sum, product) => sum + product.price, 0);
-    this._fullPrice = data.reduce((sum, product) => sum + product.fullPrice, 0);
+
+    this._productsData = data;
+
+    this._updateCheckbox(data);
+
+    //use only cards with active checkbox
+    const checkedData = data.filter(i => i.checked);
+
+    this._totalAmount = checkedData.reduce((sum, product) => sum + product.amount, 0);
+    this._totalSum = checkedData.reduce((sum, product) => sum + product.price, 0);
+    this._fullPrice = checkedData.reduce((sum, product) => sum + product.fullPrice, 0);
 
     const goodsAmountString = `${formatNumber(this._totalAmount)} ${declenWords(this._totalAmount, productWords)}`;
 
@@ -57,14 +68,8 @@ export default class ProductList {
       this._orderAmount.textContent = goodsAmountString;
       this._orderTotalPrice.textContent = formatNumber(this._fullPrice) + ' сом';
       this._orderDiscount.textContent = formatNumber(this._fullPrice - this._totalSum) + ' сом';
-      if (this._payNowCheckbox.checked) this._formSubmitBtn.textContent = `Оплатить ${fullSumFormatted} сом`;
 
-      if (this._totalAmount === 0) {
-        this._formSubmitBtn.classList.add('order__sbt-btn_inactive');
-        this._formSubmitBtn.disabled = true;
-        this._payNowCheckbox.disabled = true;
-        this._formSubmitBtn.textContent = 'Заказать';
-      }
+      this._updateSbtnBtn(fullSumFormatted);
 
       const cartsArray = Array.from(this._cartProductsAmount);
       if (data.length === 0) {
@@ -78,6 +83,22 @@ export default class ProductList {
         });
       }
 
+    }
+  }
+
+  //update text and activity
+  _updateSbtnBtn(sum) {
+    if (this._payNowCheckbox.checked) this._formSubmitBtn.textContent = `Оплатить ${sum} сом`;
+
+    if (this._totalAmount === 0) {
+      this._formSubmitBtn.classList.add('order__sbt-btn_inactive');
+      this._formSubmitBtn.disabled = true;
+      this._payNowCheckbox.disabled = true;
+      this._formSubmitBtn.textContent = 'Заказать';
+    } else {
+      this._formSubmitBtn.classList.remove('order__sbt-btn_inactive');
+      this._formSubmitBtn.disabled = false;
+      this._payNowCheckbox.disabled = false;
     }
   }
 
@@ -128,6 +149,35 @@ export default class ProductList {
     this._listSelector.classList.toggle('products_hidden');
   }
 
+  //handle checkbox 'Select all'
+  _handleAllCheckboxes(checked) {
+
+    this._productsData.forEach((i) => {
+      i.checked = checked;
+      if (checked) {
+        this._toggleThumbnails(i, i.amount);
+      } else {
+        this._toggleThumbnails(i, 0);
+      }
+    })
+
+    const allInputs = Array.from(document.querySelectorAll('.product-card__checkbox-input'));
+    allInputs.forEach((i) => {
+      i.checked = checked;
+    })
+
+    this.updateAccordionData(this._productsData);
+  }
+
+  //toggle checkbox: if any product isn't checked - drop checkbox
+  _updateCheckbox(data) {
+    if (data.some(i => !i.checked)) {
+      this._mainCheckbox.checked = false;
+    } else {
+      this._mainCheckbox.checked = true;
+    }
+  }
+
   setEventListeners() {
     this._accordionIcon.addEventListener('click', () => {
       this._handleAccordion();
@@ -135,6 +185,12 @@ export default class ProductList {
 
     if (!this._accordionAmountMissing) {
       this._payNowCheckbox.addEventListener('click', this._handlePayNowCheckbox);
+    }
+
+    if (this._mainCheckbox) {
+      this._mainCheckbox.addEventListener('click', (e) => {
+        this._handleAllCheckboxes(e.target.checked);
+      });
     }
 
   }

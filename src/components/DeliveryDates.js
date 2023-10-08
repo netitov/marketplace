@@ -73,6 +73,40 @@ export default class DeliveryDates {
     container.prepend(element);
   }
 
+  //hide/ show thumbnails when checkbox clicked
+  toggleThumbnails(card, newValue) {
+    const elementsToUpdate = Array.from(document.querySelectorAll(`[data-product-id="${card.id}"]`));
+
+    //hide thumnail if checkbox inactive
+    if (newValue === 0) {
+      elementsToUpdate.forEach((i) => {
+        //
+        i.classList.add('cart-delivery__image-box_inactive');
+
+        const row = i.closest('.cart-delivery__row');
+        const allThumbNailsInRow = Array.from(row.querySelectorAll('.cart-delivery__image-box'));
+
+        //hide row of dates if no active thumbnails left
+        if (allThumbNailsInRow.every(el => el.classList.contains('cart-delivery__image-box_inactive'))) {
+          row.classList.add('cart-delivery__row_inactive');
+        } else {
+          row.classList.remove('cart-delivery__row_inactive');
+        }
+
+      })
+    } else {
+      this._imageElement.classList.remove('cart-delivery__image-box_inactive');
+      elementsToUpdate.forEach((i) => {
+        i.classList.remove('cart-delivery__image-box_inactive');
+
+        const row = i.closest('.cart-delivery__row');
+        row.classList.remove('cart-delivery__row_inactive');
+      })
+    }
+
+  }
+
+
   //update thumbnails amount when products changed
   updateThumbnails(card, newValue, currentValue) {
     const elementsToUpdate = document.querySelectorAll(`[data-product-id="${card.id}"]`);

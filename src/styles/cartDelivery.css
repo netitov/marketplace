@@ -79,6 +79,10 @@
   margin-right: 0;
 }
 
+.cart-delivery__image-box_inactive {
+  display: none;
+}
+
 .cart-delivery__image {
   display: block;
   width: 40px;

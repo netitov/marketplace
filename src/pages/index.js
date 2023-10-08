@@ -36,14 +36,13 @@ const pickupAddresses = new AddressList ({
   renderer: (item) => renderAddress(item, pickupAddresses)
 }, pickupAddressesData, pickupAddressBox);
 
-
 //main products object
 const productsList = new ProductList ({
   items: products,
   renderer: (items) => {
     addProduct(items, '#productTemplate', productsList, false, productsContainer);
   }
-}, productsContainer,  '#products-main');
+}, productsContainer,  '#products-main', toggleThumbnails);
 
 //missing products object
 const missingProductsList = new ProductList ({
@@ -51,8 +50,7 @@ const missingProductsList = new ProductList ({
   renderer: (items) => {
     addProduct(items, '#missingProductTemplate', missingProductsList, true, missingProductsContainer);
   }
-}, missingProductsContainer, '#products-missing');
-
+}, missingProductsContainer, '#products-missing', toggleThumbnails);
 
 //add product to list
 function addProduct(card, template, copy, missingProduct, appendBox) {
@@ -60,7 +58,7 @@ function addProduct(card, template, copy, missingProduct, appendBox) {
     setLike: (e, card) => {
       setLike(e, card)
     }
-  }, missingProduct, updateProductData, removeProduct, updateThumbnails, companyData, products);
+  }, missingProduct, updateProductData, removeProduct, updateThumbnails, companyData, products, toggleThumbnails);
 
   const cardElement = cardClass.generateProduct();
   copy.addItem(cardElement, appendBox);
@@ -79,11 +77,8 @@ function updateProductData(obj) {
   } else {
     productArray.push(obj);
   }
-  //orderSum = productArray.reduce((sum, product) => sum + product.price, 0);
+
   productsList.updateAccordionData(productArray);
-
-  //return orderSum;
-
 }
 
 //remove product from list
@@ -104,6 +99,11 @@ function removeProduct(productName, missingProduct, id) {
 //update products amount in thumbnails
 function updateThumbnails(card, newValue, currentValue) {
   deliveryDatesList.updateThumbnails(card, newValue, currentValue);
+}
+
+//hide/ show thumbnails when checkbox clicked
+function toggleThumbnails(card, newValue) {
+  deliveryDatesList.toggleThumbnails(card, newValue);
 }
 
 //toggle addresses type: courier or pick up

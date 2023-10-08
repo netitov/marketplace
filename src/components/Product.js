@@ -1,9 +1,9 @@
 import { formatNumber } from '../utils/utils';
 
 export default class Product {
-  constructor(card, elementTemplate, { setLike }, missingCard, updateProductData, removeProduct, updateThumbnails, companyData, products) {
+  constructor(card, elementTemplate, { setLike },
+    missingCard, updateProductData, removeProduct, updateThumbnails, companyData, products, toggleThumbnails) {
     this._elementTemplate = elementTemplate;
-    //this._thumbnailTemplate = thumbnailTemplate;
     this._card = card;
     this._setLike = setLike;
     this._missingCard = missingCard;
@@ -13,6 +13,8 @@ export default class Product {
     this._prevValue;
     this._comanyData = companyData;
     this._products = products;
+    this._checked = true;
+    this._toggleThumbnails = toggleThumbnails;
   }
 
   _getTemplate(template) {
@@ -33,7 +35,6 @@ export default class Product {
     this._propsContainer = this._cardElement.querySelector('.product-card__properties');
     this._cardStore = this._cardElement.querySelector('.product-card__store-value');
     this._cardCompany = this._cardElement.querySelector('.product-card__company-name');
-    /* this._cardCompanyData = this._cardElement.querySelector('.product-card__company-tooltip-text'); */
     this._cardAmount = this._cardElement.querySelector('.counter__input');
     this._cardRemainder = this._cardElement.querySelector('.product-card__remainder');
     this._cardSum = this._cardElement.querySelector('.product-card__sum-value');
@@ -51,6 +52,7 @@ export default class Product {
     this._tltAddress = this._cardElement.querySelector('.product-card__company-tooltip-address');
     this._tolltip = this._cardElement.querySelector('.product-card__company-tooltip');
     this._productSize = this._cardElement.querySelector('.product-card__size');
+    this._checkbox = this._cardElement.querySelector('.checkbox__input');
 
     const card = this._card;
 
@@ -195,7 +197,15 @@ export default class Product {
     this._cardSumDiscValue.textContent = `−${formatNumber(roundedDiscountValue)} сом`;
     this._cardSumCostDiscValue.textContent = `−${formatNumber(roundedCostDiscountValue)} сом`;
 
-    this._updateProductData({ product: this._card.title, price: roundedDiscountedPriceAmount, amount: currentValue, fullPrice: roundedPriceAmount });
+    this._updateProductData({
+      product: this._card.title,
+      price: roundedDiscountedPriceAmount,
+      amount: currentValue,
+      fullPrice: roundedPriceAmount,
+      checked: this._checked,
+      id: this._card.id,
+      inOneStock: this._card.inOneStock
+    });
   }
 
   //update number of remaining products
@@ -230,6 +240,23 @@ export default class Product {
     }
   }
 
+  _handleCheckBox(checked) {
+    if (checked) {
+      this._checked = true;
+    } else {
+      this._checked = false;
+    }
+
+    this._updateSum();
+
+    if (checked) {
+      this._toggleThumbnails(this._card, this._prevValue);
+    } else {
+      this._toggleThumbnails(this._card, 0);
+
+    }
+  }
+
   _setEventListeners() {
     this._likeIcon.addEventListener('click', (e) => {
       this._toggleLike(e)
@@ -246,6 +273,10 @@ export default class Product {
     if (this._cardAmount) this._cardAmount.addEventListener('change', (e) => {
       this._changeInputCounter(e.target.value);
     });
+    if (this._checkbox) this._checkbox.addEventListener('change', (e) => {
+      this._handleCheckBox(e.target.checked);
+    })
+
   }
 
 }
