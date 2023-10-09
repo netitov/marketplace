@@ -35,6 +35,7 @@
   color: var(--grey);
   font-size: 13px;
   line-height: 16px;
+  margin-top: 7px;
 }
 
 .cart-payment__icon-box {
@@ -46,4 +47,11 @@
   background-color: var(--smoky);
   border-radius: 4px;
   margin-right: 8px;
+}
+
+@media(width: 1024px) {
+  .cart-payment {
+    box-sizing: border-box;
+    max-width: 638px;
+  }
 }

@@ -11,8 +11,11 @@
 }
 
 .navbar__list {
-  margin-left: 42px;
+  margin-left: 40px;
   position: relative;
+  width: 56px;
+  display: flex;
+  justify-content: center;
 }
 
 .navbar__list:first-of-type {
@@ -25,7 +28,7 @@
   font-size: 13px;
   font-weight: 400;
   line-height: 16px;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.2px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -40,7 +43,7 @@
   display: block;
   width: 28px;
   height: 28px;
-  margin: 0 auto 5px;
+  margin: 0 auto 7px;
 }
 
 .navbar__icon_profile {
@@ -49,7 +52,7 @@
 
 .navbar__icon_cart {
   background-image: url('../images/cart.svg');
-  margin: 0 0px 5px 7px;
+  margin: 0 0px 7px 8px;
 }
 
 .navbar__number-box {

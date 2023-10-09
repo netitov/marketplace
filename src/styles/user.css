@@ -3,12 +3,9 @@
 }
 
 .user__data {
-  gap: 35px 24px;
+  gap: 19px 24px;
   display: flex;
   flex-wrap: wrap;
-  /* grid-template-areas:
-    "username username username userlastname userlastname userlastname"
-    "email email phone phone inn inn"; */
   margin-top: 34px;
   max-width: 700px;
   width: 100%;
@@ -16,6 +13,14 @@
 
 .user__input-container {
   position: relative;
+}
+
+.user__header {
+  padding-top: 2px;
+}
+
+.user__input-info_inactive {
+  display: none;
 }
 
 .user__input {
@@ -30,12 +35,14 @@
   transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   z-index: 1;
+  padding-bottom: 2px;
 }
 
 .user__input_error {
   color: var(--orange);
   border-color: var(--orange);
 }
+
 
 .user__input-container {
 
@@ -95,19 +102,32 @@
   color: var(--orange);
   font-size: 12px;
   line-height: 14px;
-  /* visibility: hidden; */
   opacity: 0;
   transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 4px;
+  display: block;
 }
 
 .user__input-error_active {
-  /* visibility: visible; */
   opacity: 1;
+  margin-bottom: 16px;
+  /* display: block; */
+}
+
+.user__input-error_hidden {
+  display: none;
 }
 
 .user__input:focus ~ .user__label, .user__input:invalid ~ .user__input-error {
   /* visibility: visible;
   opacity: 1; */
+}
+
+@media(width: 1024px) {
+  .user {
+    box-sizing: border-box;
+    max-width: 638px;
+  }
 }
 
 .user__input-info {

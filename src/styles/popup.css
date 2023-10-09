@@ -27,6 +27,9 @@
   width: 100%;
   max-width: 500px;
   position: relative;
+  box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.20);
+  position: relative;
+  min-height: 408px;
 }
 
 .popup-payment > .popup__container {
@@ -45,6 +48,7 @@
   font-size: 20px;
   font-weight: 700;
   line-height: 28px;
+  letter-spacing: -0.1px;
 }
 
 .popup__form {
@@ -57,6 +61,8 @@
 
 .popup__sbt-btn-wrapper {
   padding: 0 24px 24px;
+  position: absolute;
+  bottom: 0;
 }
 
 .popup__sbt-btn {
@@ -71,6 +77,7 @@
   min-height: 44px;
   transition: opacity 0.3s;
   cursor: pointer;
+  padding-bottom: 2px;
 }
 
 .popup__sbt-btn_inactive {
@@ -92,6 +99,7 @@
   padding: 0;
   cursor: pointer;
   transition: opacity 0.3s;
+  margin-right: -4px;
 }
 
 .popup__close-btn:hover {

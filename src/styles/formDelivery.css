@@ -3,14 +3,15 @@
   font-size: 13px;
   font-weight: 700;
   line-height: 16px;
-  margin-bottom: 8px;
+  margin-bottom: 1px;
+  padding-left: 2px;
 }
 
 .form-delivery__btn-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 8px;
-  margin-bottom: 24px;
+  margin-bottom: 26px;
 }
 
 .form-delivery__del-type {
@@ -22,6 +23,7 @@
   border-radius: 20px;
   border: 2px solid rgba(203, 17, 171, 0.15);
   transition: background-color 0.3s;
+  padding-bottom: 3px;
 }
 
 .form-delivery__del-type:hover:not(.form-delivery__del-type_active) {

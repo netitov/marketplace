@@ -96,12 +96,18 @@ export default class Product {
   }
 
   _generateFromArray(array, tag, className, container) {
-    array.forEach(prop => {
-      const propSpan = document.createElement(tag);
-      propSpan.textContent = prop;
-      propSpan.classList.add(className);
-      container.appendChild(propSpan);
-    });
+    if (array.length === 0) {
+      container.classList.add('product-card__properties_inactive');
+    } else {
+      container.classList.remove('product-card__properties_inactive');
+      array.forEach(prop => {
+        const propSpan = document.createElement(tag);
+        propSpan.textContent = prop;
+        propSpan.classList.add(className);
+        container.appendChild(propSpan);
+      });
+    }
+
   }
 
   //check if product has a size, add size data to the card img

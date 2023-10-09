@@ -8,11 +8,17 @@ export class FormValidator {
     this._formElement = formElement;
     this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
     this._inputErrors = inputErrors;
+    this._innInput = this._formElement.querySelector('.user__input-info');
   }
 
   _showError(input, errorType) {
     const closestErrorElement = input.closest('.user__input-container').querySelector('.user__input-error');
     const errorText = this._inputErrors.find(i => i.input === input.name && i.errorType === errorType).errorText;
+
+    if (input.name === 'inn') {
+      this._innInput.classList.add('user__input-info_inactive');
+      closestErrorElement.classList.remove('user__input-error_hidden');
+    }
 
     input.classList.add(this._inputErrorClass);
     closestErrorElement.classList.add(this._errorClass);
@@ -21,6 +27,11 @@ export class FormValidator {
 
   _hideError(input) {
     const closestErrorElement = input.closest('.user__input-container').querySelector('.user__input-error');
+
+    if (input.name === 'inn') {
+      this._innInput.classList.remove('user__input-info_inactive');
+      closestErrorElement.classList.add('user__input-error_hidden');
+    }
 
     input.classList.remove(this._inputErrorClass);
     closestErrorElement.classList.remove(this._errorClass);

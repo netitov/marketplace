@@ -26,6 +26,12 @@ export default class DeliveryDates {
     this._imgSrc.src = product.thumbnail;
 
     this._productAmount.textContent = product.amount;
+    if (product.amount > 9 && product.amount < 100) {
+      this._productAmount.parentElement.classList.add('cart-delivery__amount-box_low');
+    } else {
+      this._productAmount.parentElement.classList.remove('cart-delivery__amount-box_low');
+    }
+
     this._updateNumberStyle(product.amount, this._productAmount);
 
     return this._imageBox;

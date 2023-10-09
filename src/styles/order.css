@@ -12,7 +12,7 @@
 }
 
 .order__sum-container:first-of-type {
-  margin-bottom: 8px;
+  margin-bottom: 7px;
 }
 
 .order__sum {
@@ -24,10 +24,15 @@
   white-space: nowrap;
 }
 
+.order__sum-value {
+  letter-spacing: 0.1px;
+}
+
 .order__sum-main {
   font-size: 24px;
   font-weight: 700;
   line-height: 32px;
+  letter-spacing: -0.1px;
 }
 
 .order__curr {
@@ -42,7 +47,8 @@
 .order__element-heading {
   display: flex;
   justify-content:space-between;
-  margin-bottom: 4px;
+  align-items: center;
+  margin-bottom: 5px;
 }
 
 .order__heading {
@@ -72,6 +78,7 @@
   line-height: 16px;
   margin: 0;
 }
+
 
 .order__delivery-date {
   color: var(--pink);
@@ -124,6 +131,7 @@
   line-height: 16px;
   border-bottom: 1px dashed rgba(12, 180, 119, 0.20);
   position: static;
+  margin-left: -1px;
 }
 
 .order__delivery-tooltip > .tooltip__text-box {
@@ -148,6 +156,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 12px;
+  margin-top: -2px;
 }
 
 /* .order__card-icon {
@@ -248,9 +257,30 @@
   display: none;
 }
 
+@media (min-width: 1400px) {
+
+  .order__paragr > span > br:first-of-type {
+    display: none;
+  }
+
+  .order__oferta-link ~ br {
+    display: none;
+  }
+
+}
+
+
 @media (max-width: 1020px) {
   .order__add-info {
     background-color: #F0ECF4;
+  }
+
+  .order__paragr > span > br {
+    display: none;
+  }
+
+  .order__oferta-link ~ br {
+    display: none;
   }
 }
 

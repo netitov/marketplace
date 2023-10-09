@@ -32,10 +32,13 @@
 
 .counter__btn_minus {
   background-image: url('../images/minus.svg');
+  margin-top: -1px;
 }
 
 .counter__btn_plus {
   background-image: url('../images/plus.svg');
+  margin-right: -1px;
+  margin-top: -1px;
 }
 
 .counter__input {
@@ -49,7 +52,7 @@
   text-align: center;
   padding: 0;
   background: transparent;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
 }
 
 .counter__input::-webkit-outer-spin-button,

@@ -18,11 +18,14 @@ export const payNowText = document.querySelectorAll('.order__paynow-text');
 export const formSubmitBtn = document.querySelector('.order__sbt-btn');
 //export const orderSum = document.querySelector('.order__sum-main-value');
 
-export const formatNumber = (number) => {
+export const formatNumber = (number, spaceType) => {
+  const space = spaceType === undefined ? ' ' : ' ';
   const strNumber = number.toString();
-  const parts = strNumber.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  const parts = strNumber.replace(/\B(?=(\d{3})+(?!\d))/g, space); //
   return parts;
 }
+
+
 
 export const declenWords = (value, words) => {
 	value = Math.abs(value) % 100;

@@ -323,7 +323,7 @@
             <!-- user data -->
             <div class="cart-form__card-wrapper user">
               <div class="cart-form__card-header-box">
-                <h3 class="cart-form__card-header">Получатель</h3>
+                <h3 class="cart-form__card-header user__header">Получатель</h3>
               </div>
 
               <div class="user__data">
@@ -356,7 +356,7 @@
                   <input class="user__input" type="text" id="inn" name="inn" maxlength="14">
                   <label class="user__label" for="inn">ИНН</label>
                   <span class="user__input-info">Для таможенного оформления</span>
-                  <span class="user__input-error">Заполните поле</span>
+                  <span class="user__input-error user__input-error_hidden">Заполните поле</span>
                 </div>
 
               </div>
@@ -385,19 +385,19 @@
                   <!-- full sum -->
                   <div class="order__sum-container">
                     <span class="order__sum order__amount">203 товара</span>
-                    <span class="order__sum order__sum-no-disc">2 302 048&nbsp;сом</span>
+                    <span class="order__sum order__sum-no-disc order__sum-value">2 302 048&nbsp;сом</span>
                   </div>
 
                   <!-- discount -->
                   <div class="order__sum-container">
                     <span class="order__sum">Скидка</span>
-                    <span class="order__sum order__sum-discount">-200 985&nbsp;сом</span>
+                    <span class="order__sum order__sum-discount order__sum-value">-200 985&nbsp;сом</span>
                   </div>
 
                   <!-- delivery -->
                   <div class="order__sum-container">
                     <span class="order__sum">Доставка</span>
-                    <span class="order__sum">Бесплатно</span>
+                    <span class="order__sum order__sum-value">Бесплатно</span>
                   </div>
 
                 </div>
@@ -415,7 +415,7 @@
                   <div class="order__add-info">
                     <span class="order__delivery-check"></span>
                     <div class="order__paragr">
-                      <span>Обратная доставка товаров на склад при отказе &mdash;</span>
+                      <span>Обратная доставка товаров <br> на склад при отказе &mdash;<br></span>
                       <div class="order__delivery-tooltip tooltip">бесплатно
                         <div class="tooltip__text-box">
                           <span class="tooltip__text order__delivery-tooltip-text">
@@ -462,7 +462,7 @@
                 <div class="order__oferta-box">
                   <span class="order__oferta-icon"></span>
                   <p class="order__paragr order__oferta">Соглашаюсь
-                    <a class="order__oferta-link" href="#">с правилами пользования торговой площадкой</a> и
+                    <a class="order__oferta-link" href="#">с правилами пользования торговой площадкой</a> <br>и
                     <a class="order__oferta-link" href="#">возврата</a>
                   </p>
                 </div>

@@ -63,10 +63,10 @@ export default class ProductList {
       this._accordionAmount.textContent = `${goodsAmountString} ·`;
       const fullSumFormatted = formatNumber(this._totalSum);
       this._accordionSum.textContent = fullSumFormatted + ' сом';
-      this._orderSum.textContent = fullSumFormatted;
+      this._orderSum.textContent = formatNumber(this._totalSum, ' ');
       this._orderSum.title = fullSumFormatted + ' сом';
       this._orderAmount.textContent = goodsAmountString;
-      this._orderTotalPrice.textContent = formatNumber(this._fullPrice) + ' сом';
+      this._orderTotalPrice.textContent = formatNumber(this._fullPrice, ' ') + ' сом';
       this._orderDiscount.textContent = formatNumber(this._fullPrice - this._totalSum) + ' сом';
 
       this._updateSbtnBtn(fullSumFormatted);
