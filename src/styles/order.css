@@ -295,7 +295,7 @@
   }
 
   .order__element {
-    margin-bottom: 16px;
+    margin-bottom: 17px;
   }
 
   .order__card-data {
@@ -304,5 +304,14 @@
 
   .order__payment {
     margin-bottom: 24px;
+    margin-top: -2px;
+  }
+
+  .order__delivery-tooltip {
+    margin-left: 1px;
+  }
+
+  .order__add-info {
+    margin-bottom: 15px;
   }
 }

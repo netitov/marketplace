@@ -82,4 +82,13 @@
     font-size: 14px;
     line-height: 20px;
   }
+
+  .counter__btn_plus {
+    background-position: 36%;
+  }
+
+  .counter__btn_minus {
+    background-position: 60%;
+  }
+
 }

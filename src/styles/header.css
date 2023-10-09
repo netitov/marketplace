@@ -89,18 +89,22 @@
   }
 
   .header__logo {
-    font-size: 26px;
-    font-weight: 600;
-    line-height: 24px;
-    letter-spacing: 0.52px;
-    white-space: nowrap;
-    height: 24px;
     display: block;
+    font-size: 20px;
+    font-weight: 600;
+    height: 24px;
+    letter-spacing: 2.1px;
+    line-height: 24px;
+    padding: 14px 0 18px;
+    white-space: nowrap;
     width: auto;
-    padding: 13px 0 21px;
   }
 
   .header__navbar {
     display: none;
+  }
+
+  .header:after {
+    height: 26px;
   }
 }

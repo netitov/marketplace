@@ -90,6 +90,10 @@
   }
 }
 
+.cart-delivery__paragr > span > br {
+  display: none;
+}
+
 @media (max-width: 1020px) {
   .cart-form {
     flex-direction: column;
@@ -156,10 +160,19 @@
 
   .cart-form__container {
     padding: var(--phone-page-padding);
+    margin-top: -2px;
   }
 
   .cart-form__card-wrapper {
     padding-top: 8px;
+  }
+
+  .cart-form__card-wrapper {
+    padding-top: 14px;
+  }
+
+  .cart-form__sidebar {
+    margin-top: 8px;
   }
 
 }

@@ -104,6 +104,10 @@ export default class Product {
         const propSpan = document.createElement(tag);
         propSpan.textContent = prop;
         propSpan.classList.add(className);
+
+        if (prop.includes('Размер')) {
+          propSpan.classList.add('product-card__prop-value_hidden');
+        }
         container.appendChild(propSpan);
       });
     }

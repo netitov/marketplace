@@ -1,7 +1,7 @@
 .mob-nav {
   height: 56px;
   background-color: #fff;
-  padding: 0 16px;
+  padding: 0 13px;
   display: none;
   align-items: center;
   position: fixed;
@@ -30,6 +30,7 @@
 .mob-nav__li .navbar__number-box {
   right: -6px;
   color: #fff;
+  top: -4px;
 }
 
 .mob-nav__link {

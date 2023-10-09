@@ -55,3 +55,9 @@
     max-width: 638px;
   }
 }
+
+@media (max-width: 580px) {
+  .cart-payment__card {
+    margin: 10px 0 0;
+  }
+}
