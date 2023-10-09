@@ -4,7 +4,7 @@
 
 User cart
 
-View the project: <>
+View the project: <https://netitov.github.io/marketplace/>
 
 
 ### Features and content
