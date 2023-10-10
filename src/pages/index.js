@@ -10,7 +10,7 @@ import { products, missingProducts, addressesData, pickupAddressesData, delivery
 import {
   productsContainer, missingProductsContainer, deliveryPopupSelector, courierAddressBox, pickupAddressBox,
   deliveryContainer, paymentChangeBtns, paymentPopupSelector, cardsContainerSelector, cartFormElement,
-  cartFormElements, inputErrros, addressChangeBtn, scrollButton, targetElement, payNowCheckbox, payNowText, formSubmitBtn, formatNumber
+  cartFormElements, inputErrros, addressChangeBtn, scrollButton, targetElement
 } from '../utils/utils';
 
 //products in cart

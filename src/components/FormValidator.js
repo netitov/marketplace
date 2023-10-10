@@ -202,14 +202,24 @@ export class FormValidator {
     return !validityData.some(i => !i.validity);
   }
 
+  _scrollToTarget(targetElement) {
+    targetElement.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  _submitForm(e) {
+    e.preventDefault();
+    const formIsValid = this._checkFormValidity();
+
+    if (formIsValid) {
+      alert('The order has been sent');
+    } else {
+      const inputsContainer = this._formElement.querySelector('.user');
+      this._scrollToTarget(inputsContainer);
+    }
+  }
+
   enableValidation() {
-    this._formElement.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const formIsValid = this._checkFormValidity();
-      if (formIsValid) {
-        alert('The order has been sent');
-      }
-    });
+    this._formElement.addEventListener('submit', (e) => this._submitForm(e));
 
     this._setAdditionalListeners();
     this._setInputListeners();
