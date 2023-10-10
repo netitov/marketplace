@@ -21,6 +21,7 @@ export class FormValidator {
     }
 
     input.classList.add(this._inputErrorClass);
+    input.classList.add(this._inputErrorClass + '_' + errorType);
     closestErrorElement.classList.add(this._errorClass);
     closestErrorElement.textContent = errorText;
   }
@@ -33,9 +34,9 @@ export class FormValidator {
       closestErrorElement.classList.add('user__input-error_hidden');
     }
 
-    input.classList.remove(this._inputErrorClass);
+    //remove all error class
+    input.classList.remove(this._inputErrorClass, this._inputErrorClass + '_filling', this._inputErrorClass + '_validity');
     closestErrorElement.classList.remove(this._errorClass);
-    //closestErrorElement.textContent = '';
   }
 
   _checkEmailValidation(email) {
@@ -96,6 +97,7 @@ export class FormValidator {
     return value;
   }
 
+  //input validation on blur
   _checkInputValidity(input, submit) {
     const inputIsValid = this._validateInput(input.name, input.value);
 
@@ -118,22 +120,40 @@ export class FormValidator {
     }
   }
 
-  //set listeners to all inputs
+  //input validation on typing
+  _checkInputTypingValidity(input) {
+    if (input.value !== '') {
+      const inputIsValid = this._validateInput(input.name, input.value);
+
+      //if input hasn't validtion error - hide current error of empty input
+      if (!input.classList.contains('user__input_error_validity')) {
+        this._hideError(input);
+
+      //check validation if empty input error is active
+      } else if (input.classList.contains('user__input_error')) {
+        if (!inputIsValid) {
+          this._showError(input, 'validity');
+        } else {
+          this._hideError(input);
+        }
+      }
+    }
+  }
+
+  //set listeners to all inputs: launch after blur
   _setInputListeners() {
     this._inputList.forEach((input) => {
-      const eventType = input.classList.contains('user__input_error') ? 'input' : 'change';
-      input.addEventListener(eventType, () => {
+      input.addEventListener('change', () => {
         this._checkInputValidity(input, false);
       });
     });
   }
 
-  //set listeners from all inputs
-  _removeInputListeners() {
+  //set listeners to all inputs: launch while typing
+  _setInputTypingListeners() {
     this._inputList.forEach((input) => {
-      const eventType = input.classList.contains('user__input_error') ? 'input' : 'change';
-      input.removeEventListener(eventType, () => {
-        this._checkInputValidity(input, false);
+      input.addEventListener('input', () => {
+        this._checkInputTypingValidity(input);
       });
     });
   }
@@ -172,7 +192,7 @@ export class FormValidator {
 
   }
 
-  //check all inputs in for are valid
+  //check all inputs in the form on submit
   _checkFormValidity() {
     const validityData = [];
     this._inputList.forEach((input) => {
@@ -186,18 +206,16 @@ export class FormValidator {
     this._formElement.addEventListener('submit', (e) => {
       e.preventDefault();
       const formIsValid = this._checkFormValidity();
-
-      if (!formIsValid) {
-       this._removeInputListeners();
-       this._setInputListeners();
-      } else {
-        console.log('Data saved')
-        alert('The order has been sent')
+      if (formIsValid) {
+        console.log('Data saved');
+        alert('The order has been sent');
       }
     });
 
     this._setAdditionalListeners();
     this._setInputListeners();
+
+    this._setInputTypingListeners();
   };
 
 }
