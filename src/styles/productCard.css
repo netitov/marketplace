@@ -504,11 +504,8 @@
   }
 
   .products__list_missing .product-card__counter-wrapper {
-    padding-top: 2px;
-  }
-
-  .products__list_missing .product-card__counter-wrapper {
     grid-column: 2;
+    padding-top: 2px;
   }
 
   .product-card__remainder {

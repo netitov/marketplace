@@ -1,10 +1,10 @@
-# Market place - «Товары и точка»
+# Marketplace - «Товары и точка»
 
 ![Project image](https://github.com/netitov/marketplace/blob/main/src/images/site-image.png)
 
-User cart
+Marketplace cart.
 
-View the project: <>
+View the project: <https://netitov.github.io/marketplace/>
 
 
 ### Features and content
