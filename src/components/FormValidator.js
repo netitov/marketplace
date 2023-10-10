@@ -207,7 +207,6 @@ export class FormValidator {
       e.preventDefault();
       const formIsValid = this._checkFormValidity();
       if (formIsValid) {
-        console.log('Data saved');
         alert('The order has been sent');
       }
     });

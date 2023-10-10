@@ -165,10 +165,8 @@ export default class ProductList {
   _handleAccordion() {
     if (this._listSelector.classList.contains('products_hidden')) {
       this._productList.style.maxHeight = this._productListHeight + 'px';
-      console.log('if')
     } else {
       this._productList.style.maxHeight = 0;
-      console.log('else')
     }
     this._listSelector.classList.toggle('products_hidden');
   }
