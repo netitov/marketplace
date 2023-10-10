@@ -3,6 +3,11 @@
   transition: margin-bottom 0.3s 0.2s;
 }
 
+.products_high {
+  margin-bottom: 23px;
+  transition: none;
+}
+
 .products__heading {
   display: flex;
   align-items: center;
@@ -85,6 +90,15 @@
   list-style-type: none;
   overflow-y: hidden;
   transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin-bottom .3s .2s;
+}
+
+.products__list_high {
+  margin-bottom: 19px;
+  transition: none;
+}
+
+#products-missing .products__list_high {
+  margin-top: 25px;
 }
 
 .products_hidden .products__list {

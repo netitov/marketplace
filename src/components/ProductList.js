@@ -46,7 +46,9 @@ export default class ProductList {
 
     this._productsData = data;
 
-    this._updateCheckbox(data);
+    if (this._mainCheckbox) {
+      this._updateCheckbox(data);
+    }
 
     //use only cards with active checkbox
     const checkedData = data.filter(i => i.checked);
@@ -54,6 +56,13 @@ export default class ProductList {
     this._totalAmount = checkedData.reduce((sum, product) => sum + product.amount, 0);
     this._totalSum = checkedData.reduce((sum, product) => sum + product.price, 0);
     this._fullPrice = checkedData.reduce((sum, product) => sum + product.fullPrice, 0);
+
+    //add margins if all products were removed
+    if (data.length === 0 && !this._accordionAmountMissing) {
+      this._productList.classList.add('products__list_high');
+    } else {
+      this._productList.classList.remove('products__list_high');
+    }
 
     const goodsAmountString = `${formatNumber(this._totalAmount)} ${declenWords(this._totalAmount, productWords)}`;
 
@@ -133,6 +142,19 @@ export default class ProductList {
     const str = arr.length.toString();
     const verb = str.substring(str.length - 1) === '1' ? 'Отсутствует' : 'Отсутствуют'
     this._accordionAmountMissing.textContent = `${verb} · ${formatNumber(arr.length)} ${declenWords(arr.length, productWords)}`;
+
+    //correct margins if 0 or 1 products left
+    if (arr.length === 1) {
+      this._productList.classList.add('products__list_high');
+    } else {
+      this._productList.classList.remove('products__list_high');
+    }
+
+    if (arr.length === 0) {
+      this._listSelector.classList.add('products_high');
+    } else {
+      this._listSelector.classList.remove('products_high');
+    }
   }
 
   addItem(element, box) {
@@ -143,8 +165,10 @@ export default class ProductList {
   _handleAccordion() {
     if (this._listSelector.classList.contains('products_hidden')) {
       this._productList.style.maxHeight = this._productListHeight + 'px';
+      console.log('if')
     } else {
       this._productList.style.maxHeight = 0;
+      console.log('else')
     }
     this._listSelector.classList.toggle('products_hidden');
   }
@@ -171,6 +195,7 @@ export default class ProductList {
 
   //toggle checkbox: if any product isn't checked - drop checkbox
   _updateCheckbox(data) {
+
     if (data.some(i => !i.checked)) {
       this._mainCheckbox.checked = false;
     } else {
